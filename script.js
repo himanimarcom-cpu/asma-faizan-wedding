@@ -22,21 +22,54 @@ window.addEventListener("load", function () {
 
 
 // =========================================================
-// OPEN INVITATION
+// ROYAL GATE — UNLOCK & OPEN
 // =========================================================
 
-const openButton = document.getElementById("openInvitation");
+const gateLock = document.getElementById("gateLock");
 const cover = document.getElementById("cover");
 const invitation = document.getElementById("invitation");
 const musicButton = document.getElementById("musicButton");
 
-openButton.addEventListener("click", function () {
+let gateOpened = false;
 
-    // Smooth cover fade
-    cover.style.transition = "opacity 1.2s ease, transform 1.5s ease";
 
-    cover.style.opacity = "0";
-    cover.style.transform = "scale(1.05)";
+gateLock.addEventListener("click", function () {
+
+    // Prevent multiple clicks
+    if (gateOpened) {
+        return;
+    }
+
+    gateOpened = true;
+
+
+    // ---------------------------------------------
+    // STEP 1 — UNLOCK THE LOCK
+    // ---------------------------------------------
+
+    cover.classList.add("gate-unlocked");
+
+
+    // ---------------------------------------------
+    // STEP 2 — WAIT FOR GATE TO OPEN
+    // ---------------------------------------------
+
+    setTimeout(function () {
+
+        // Fade away the opening cover
+        cover.style.transition =
+            "opacity 1.2s ease, transform 1.5s ease";
+
+        cover.style.opacity = "0";
+        cover.style.transform = "scale(1.04)";
+
+
+    }, 2200);
+
+
+    // ---------------------------------------------
+    // STEP 3 — SHOW MAIN INVITATION
+    // ---------------------------------------------
 
     setTimeout(function () {
 
@@ -46,11 +79,14 @@ openButton.addEventListener("click", function () {
 
         musicButton.classList.add("show");
 
+
         // Start countdown
         updateCountdown();
 
+
         // Start slideshow
         startSlideshow();
+
 
         // Scroll to top
         window.scrollTo({
@@ -58,7 +94,8 @@ openButton.addEventListener("click", function () {
             behavior: "instant"
         });
 
-    }, 1200);
+
+    }, 3400);
 
 });
 
