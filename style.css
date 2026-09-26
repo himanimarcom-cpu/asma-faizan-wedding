@@ -1470,3 +1470,540 @@ body {
     }
 
 }
+/* =====================================================
+   ROYAL ISLAMIC GATE — OPENING COVER
+===================================================== */
+
+.royal-gate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(82vw, 520px);
+    height: min(78vh, 650px);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    perspective: 1200px;
+}
+
+/* -----------------------------------------------------
+   GATE DOORS
+----------------------------------------------------- */
+
+.gate-door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061a15 0%,
+            #0d3329 45%,
+            #071f19 100%
+        );
+
+    border: 2px solid var(--gold-dark);
+
+    box-shadow:
+        inset 0 0 35px rgba(215, 181, 109, 0.12),
+        0 0 25px rgba(0, 0, 0, 0.45);
+
+    transition:
+        transform 2s cubic-bezier(.77,0,.18,1),
+        box-shadow 1.5s ease;
+}
+
+.gate-left {
+    left: 0;
+
+    border-right: 1px solid var(--gold);
+
+    transform-origin: left center;
+
+    border-radius: 260px 0 0 0;
+}
+
+.gate-right {
+    right: 0;
+
+    border-left: 1px solid var(--gold);
+
+    transform-origin: right center;
+
+    border-radius: 0 260px 0 0;
+}
+
+
+/* -----------------------------------------------------
+   ISLAMIC ARCH
+----------------------------------------------------- */
+
+.gate-arch {
+    position: absolute;
+
+    top: 5%;
+    left: 12%;
+    width: 76%;
+    height: 90%;
+
+    border: 1px solid rgba(215, 181, 109, 0.65);
+
+    border-radius:
+        50% 50% 8px 8px /
+        22% 22% 8px 8px;
+
+    box-shadow:
+        inset 0 0 25px rgba(215, 181, 109, 0.08);
+}
+
+
+/* -----------------------------------------------------
+   INNER GATE PANEL
+----------------------------------------------------- */
+
+.gate-panel {
+    position: absolute;
+
+    top: 16%;
+    left: 17%;
+
+    width: 66%;
+    height: 68%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-around;
+
+    border: 1px solid rgba(215, 181, 109, 0.35);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(215,181,109,.04),
+            transparent
+        );
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,.25);
+}
+
+.gate-pattern {
+    color: var(--gold);
+    font-family: var(--serif);
+
+    font-size: 28px;
+
+    opacity: .7;
+
+    text-shadow:
+        0 0 12px rgba(215,181,109,.35);
+}
+
+
+/* -----------------------------------------------------
+   GOLD BORDER DETAILS
+----------------------------------------------------- */
+
+.gate-door::before,
+.gate-door::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity: .65;
+}
+
+.gate-door::before {
+    top: 10%;
+}
+
+.gate-door::after {
+    bottom: 10%;
+}
+
+
+/* -----------------------------------------------------
+   LOCK
+----------------------------------------------------- */
+
+.gate-lock {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 72px;
+    height: 86px;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 30;
+
+    border: 1px solid var(--gold-light);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f0d99b,
+            #b9914b 55%,
+            #8c682e
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.5),
+        0 0 25px rgba(215,181,109,.35);
+
+    cursor: pointer;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.gate-lock:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.55),
+        0 0 35px rgba(240,217,155,.55);
+}
+
+
+/* Lock shackle */
+
+.lock-shackle {
+    position: absolute;
+
+    top: -27px;
+    left: 16px;
+
+    width: 38px;
+    height: 42px;
+
+    border: 7px solid var(--gold-light);
+
+    border-bottom: 0;
+
+    border-radius: 22px 22px 0 0;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,.35)
+        );
+}
+
+
+/* Lock body */
+
+.lock-body {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #5c421d;
+
+    font-size: 24px;
+}
+
+
+/* -----------------------------------------------------
+   UNLOCK TEXT
+----------------------------------------------------- */
+
+.unlock-text {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 7%;
+
+    transform: translateX(-50%);
+
+    z-index: 35;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    color: var(--ivory);
+
+    font-family: var(--sans);
+
+    letter-spacing: 3px;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    pointer-events: none;
+}
+
+.unlock-text span,
+.unlock-text strong {
+    display: block;
+}
+
+.unlock-text strong {
+    color: var(--gold-light);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+}
+
+
+/* -----------------------------------------------------
+   GATE ENTRY — CONTENT BEHIND DOORS
+----------------------------------------------------- */
+
+.gate-entry {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(78vw, 500px);
+    height: min(74vh, 620px);
+
+    transform:
+        translate(-50%, -50%)
+        scale(.94);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    z-index: 4;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1.5s ease,
+        transform 2s ease;
+}
+
+.entry-glow {
+    position: absolute;
+
+    inset: 5%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240,217,155,.14),
+            transparent 65%
+        );
+
+    filter: blur(15px);
+}
+
+.entry-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* -----------------------------------------------------
+   PREMIUM NAMES
+----------------------------------------------------- */
+
+.entry-content .names h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size:
+        clamp(58px, 13vw, 105px);
+
+    font-weight: 500;
+
+    letter-spacing: 7px;
+
+    line-height: .82;
+
+    color: var(--ivory);
+
+    text-shadow:
+        0 3px 18px rgba(0,0,0,.4);
+}
+
+.entry-content .names .weds {
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(38px, 7vw, 52px);
+
+    color: var(--gold-light);
+
+    margin: 18px 0;
+
+    line-height: 1;
+}
+
+
+/* -----------------------------------------------------
+   GATE HINT
+----------------------------------------------------- */
+
+.gate-hint {
+    position: absolute;
+
+    bottom: 5%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 40;
+
+    color: rgba(248,242,229,.65);
+
+    font-family: var(--sans);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    white-space: nowrap;
+
+    animation:
+        gateHintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes gateHintPulse {
+
+    0%,
+    100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* -----------------------------------------------------
+   UNLOCKED STATE
+----------------------------------------------------- */
+
+.cover.gate-unlocked .gate-left {
+    transform:
+        rotateY(-92deg)
+        translateX(-5%);
+
+    box-shadow:
+        inset 0 0 40px rgba(215,181,109,.08);
+}
+
+.cover.gate-unlocked .gate-right {
+    transform:
+        rotateY(92deg)
+        translateX(5%);
+
+    box-shadow:
+        inset 0 0 40px rgba(215,181,109,.08);
+}
+
+.cover.gate-unlocked .gate-lock {
+    transform:
+        translate(-50%, -50%)
+        scale(.85)
+        rotate(12deg);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        transform .7s ease,
+        opacity .5s ease;
+}
+
+.cover.gate-unlocked .unlock-text,
+.cover.gate-unlocked .gate-hint {
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+
+.cover.gate-unlocked .gate-entry {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* -----------------------------------------------------
+   MOBILE
+----------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .royal-gate {
+        width: 88vw;
+        height: 72vh;
+    }
+
+    .gate-lock {
+        width: 62px;
+        height: 76px;
+    }
+
+    .lock-shackle {
+        left: 14px;
+        width: 34px;
+        height: 38px;
+    }
+
+    .gate-pattern {
+        font-size: 22px;
+    }
+
+    .unlock-text {
+        bottom: 8%;
+    }
+
+    .gate-hint {
+        bottom: 4%;
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+}
