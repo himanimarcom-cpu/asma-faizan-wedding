@@ -43,57 +43,101 @@
 
 
 <!-- =====================================================
-     OPENING COVER
+     OPENING COVER — ROYAL GATE
 ===================================================== -->
 
 <section id="cover" class="cover">
 
+    <!-- Background -->
     <div class="cover-overlay"></div>
-
     <div class="islamic-pattern"></div>
 
-    <div class="cover-content">
+    <!-- Royal Gate -->
+    <div class="royal-gate">
 
-        <div class="bismillah">
-            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-        </div>
-
-        <div class="small-heading">
-            TOGETHER WITH THEIR FAMILIES
-        </div>
-
-        <div class="names">
-
-            <h1>ASMA</h1>
-
-            <div class="weds">
-                Weds
+        <!-- Left Door -->
+        <div class="gate-door gate-left">
+            <div class="gate-arch"></div>
+            <div class="gate-panel">
+                <div class="gate-pattern">✦</div>
+                <div class="gate-pattern">۞</div>
+                <div class="gate-pattern">✦</div>
             </div>
-
-            <h1>FAIZAN</h1>
-
         </div>
 
-        <div class="gold-divider">
-            <span>✦</span>
+        <!-- Right Door -->
+        <div class="gate-door gate-right">
+            <div class="gate-arch"></div>
+            <div class="gate-panel">
+                <div class="gate-pattern">✦</div>
+                <div class="gate-pattern">۞</div>
+                <div class="gate-pattern">✦</div>
+            </div>
         </div>
 
-        <div class="date">
-            14 <span>•</span> 12 <span>•</span> 2026
-        </div>
+        <!-- Lock -->
+        <button id="gateLock" class="gate-lock" aria-label="Unlock invitation">
 
-        <button id="openInvitation" class="open-button">
+            <span class="lock-shackle"></span>
 
-            <span>✦</span>
-            OPEN INVITATION
-            <span>✦</span>
+            <span class="lock-body">
+                ✦
+            </span>
 
         </button>
 
-        <div class="scroll-hint">
-            TAP TO ENTER
+        <!-- Lock Text -->
+        <div class="unlock-text">
+            <span>UNLOCK OUR</span>
+            <strong>INVITATION</strong>
         </div>
 
+    </div>
+
+
+    <!-- Invitation Entry -->
+    <div class="gate-entry">
+
+        <div class="entry-glow"></div>
+
+        <div class="entry-content">
+
+            <div class="bismillah">
+                بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+            </div>
+
+            <div class="small-heading">
+                TOGETHER WITH THEIR FAMILIES
+            </div>
+
+            <div class="names">
+
+                <h1>ASMA</h1>
+
+                <div class="weds">
+                    Weds
+                </div>
+
+                <h1>FAIZAN</h1>
+
+            </div>
+
+            <div class="gold-divider">
+                <span>✦</span>
+            </div>
+
+            <div class="date">
+                14 <span>•</span> 12 <span>•</span> 2026
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Small instruction -->
+    <div class="gate-hint">
+        TAP THE LOCK TO ENTER
     </div>
 
 </section>
