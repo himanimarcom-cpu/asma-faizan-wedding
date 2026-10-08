@@ -2007,3 +2007,823 @@ body {
     }
 
 }
+/* =========================================================
+   ASMA WEDS FAIZAN — ROYAL WEDDING GATE
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap');
+
+
+/* ---------- MAIN GATE ---------- */
+
+.royal-gate {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 999999;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(54, 76, 55, 0.45),
+            transparent 32%
+        ),
+        linear-gradient(
+            115deg,
+            #020806 0%,
+            #071914 40%,
+            #020806 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+/* ---------- BACKGROUND ---------- */
+
+.gate-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center 30%,
+            rgba(190, 151, 69, 0.13),
+            transparent 38%
+        ),
+        linear-gradient(
+            90deg,
+            #010504,
+            #071a15 35%,
+            #0b241d 50%,
+            #071a15 65%,
+            #010504
+        );
+}
+
+
+/* subtle royal texture */
+
+.gate-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.16;
+
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 5px,
+            rgba(215,181,109,0.12) 6px,
+            transparent 7px
+        );
+
+    pointer-events: none;
+}
+
+
+/* ---------- LIGHTS ---------- */
+
+.gate-light {
+    position: absolute;
+    width: 280px;
+    height: 500px;
+
+    top: 10%;
+
+    filter: blur(60px);
+
+    background: rgba(215,181,109,0.10);
+
+    pointer-events: none;
+}
+
+.light-left {
+    left: -100px;
+}
+
+.light-right {
+    right: -100px;
+}
+
+
+/* ---------- ROYAL PILLARS ---------- */
+
+.royal-pillar {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: clamp(55px, 11vw, 150px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #11110d,
+            #4a3a1e 25%,
+            #c39a4b 48%,
+            #4c3b20 70%,
+            #0b0d0b
+        );
+
+    border-left: 2px solid rgba(215,181,109,0.7);
+    border-right: 2px solid rgba(215,181,109,0.7);
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.8),
+        0 0 35px rgba(0,0,0,0.7);
+}
+
+.pillar-left {
+    left: 0;
+}
+
+.pillar-right {
+    right: 0;
+}
+
+
+/* pillar top */
+
+.pillar-cap {
+    position: absolute;
+
+    top: 4%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 80%;
+    height: 80px;
+
+    border-radius: 50% 50% 10px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5d4724,
+            #d9b96c,
+            #654d27
+        );
+
+    box-shadow:
+        0 0 20px rgba(215,181,109,0.25);
+}
+
+
+/* decorative pillar pattern */
+
+.pillar-pattern {
+    position: absolute;
+
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 10%;
+
+    border: 1px solid rgba(230,201,128,0.45);
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 8px,
+            rgba(215,181,109,0.15) 9px,
+            transparent 10px
+        );
+}
+
+
+/* ---------- MAIN GATE AREA ---------- */
+
+.main-gate {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -48%);
+
+    width: min(78vw, 1100px);
+    height: min(78vh, 850px);
+
+    display: flex;
+
+    perspective: 1800px;
+
+    filter:
+        drop-shadow(0 30px 35px rgba(0,0,0,0.75));
+}
+
+
+/* ---------- DOORS ---------- */
+
+.gate-door {
+    position: relative;
+
+    width: 50%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(44,76,58,0.7),
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            #06140f,
+            #0c2a20 50%,
+            #03100c
+        );
+
+    border: 3px solid #b9934c;
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,0.8),
+        inset 0 0 12px rgba(215,181,109,0.35);
+
+    transition:
+        transform 1.9s cubic-bezier(.77,0,.18,1);
+}
+
+
+/* left door */
+
+.gate-left {
+    transform-origin: left center;
+
+    border-right: 1px solid rgba(215,181,109,0.8);
+}
+
+
+/* right door */
+
+.gate-right {
+    transform-origin: right center;
+
+    border-left: 1px solid rgba(215,181,109,0.8);
+}
+
+
+/* ---------- ISLAMIC DOOR PATTERN ---------- */
+
+.gate-door::before {
+    content: "";
+
+    position: absolute;
+    inset: 25px;
+
+    border: 2px solid rgba(215,181,109,0.55);
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 13px,
+            rgba(215,181,109,0.08) 14px,
+            transparent 15px
+        );
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,0.7);
+}
+
+
+/* ---------- ARCH ---------- */
+
+.gate-arch {
+    position: absolute;
+
+    left: 18%;
+    right: 18%;
+    top: 9%;
+
+    height: 36%;
+
+    border: 3px solid #c7a45a;
+
+    border-bottom: none;
+
+    border-radius:
+        50% 50% 0 0;
+
+    box-shadow:
+        inset 0 0 20px rgba(215,181,109,0.15);
+}
+
+
+/* ---------- GOLD PANELS ---------- */
+
+.gate-panel {
+    position: absolute;
+
+    left: 10%;
+    right: 10%;
+
+    border: 1px solid rgba(215,181,109,0.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(215,181,109,0.08),
+            rgba(0,0,0,0.18)
+        );
+
+    box-shadow:
+        inset 0 0 18px rgba(0,0,0,0.6);
+}
+
+.panel-top {
+    top: 10%;
+    height: 30%;
+}
+
+.panel-middle {
+    top: 43%;
+    height: 22%;
+}
+
+.panel-bottom {
+    bottom: 6%;
+    height: 25%;
+}
+
+
+/* ---------- GOLD DECORATIONS ---------- */
+
+.gate-decoration {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    border: 2px solid #d7b56d;
+
+    transform: rotate(45deg);
+
+    box-shadow:
+        0 0 10px rgba(215,181,109,0.15);
+}
+
+.decoration-1 {
+    top: 13%;
+    left: 8%;
+}
+
+.decoration-2 {
+    top: 13%;
+    right: 8%;
+}
+
+.decoration-3 {
+    bottom: 10%;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+
+/* ---------- VERTICAL GOLD LINE ---------- */
+
+.gold-line {
+    position: absolute;
+
+    top: 5%;
+    bottom: 5%;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #d7b56d 20%,
+            #f0d994 50%,
+            #d7b56d 80%,
+            transparent
+        );
+
+    opacity: 0.75;
+}
+
+.gate-left .vertical-line {
+    right: 4%;
+}
+
+.gate-right .vertical-line {
+    left: 4%;
+}
+
+
+/* =========================================================
+   ROYAL CENTER SEAL
+   ========================================================= */
+
+.royal-seal {
+    position: absolute;
+
+    z-index: 50;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp(220px, 29vw, 360px);
+    aspect-ratio: 1 / 1;
+
+    border: none;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    background: transparent;
+
+    filter:
+        drop-shadow(0 12px 25px rgba(0,0,0,0.8));
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+/* outer gold ring */
+
+.seal-outer {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    padding: 10px;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            #76531d,
+            #f0d994,
+            #9d732d,
+            #f6df9c,
+            #73501d,
+            #d7b56d,
+            #76531d
+        );
+
+    box-shadow:
+        0 0 0 4px #1b1408,
+        0 0 0 7px #b58b40,
+        0 0 40px rgba(215,181,109,0.35);
+}
+
+
+/* middle ring */
+
+.seal-middle {
+    width: 100%;
+    height: 100%;
+
+    padding: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #071812;
+
+    border: 2px solid #e1c47a;
+
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,0.8);
+}
+
+
+/* inner seal */
+
+.seal-inner {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(215,181,109,0.65);
+
+    background:
+        radial-gradient(
+            circle,
+            #173329,
+            #06120e 70%
+        );
+
+    position: relative;
+}
+
+
+/* subtle ornament */
+
+.seal-inner::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 13%;
+
+    color: #d7b56d;
+
+    font-size: 20px;
+
+    opacity: 0.8;
+}
+
+
+/* small text */
+
+.seal-small {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: clamp(7px, 0.7vw, 10px);
+
+    letter-spacing: 3px;
+
+    color: #d7b56d;
+
+    margin-bottom: 7px;
+}
+
+
+/* bride */
+
+.bride-name,
+.groom-name {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(38px, 5vw, 68px);
+
+    line-height: 0.9;
+
+    color: #f1d58e;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.8),
+        0 0 15px rgba(215,181,109,0.15);
+}
+
+
+/* Weds */
+
+.weds {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(17px, 2vw, 25px);
+
+    font-style: italic;
+
+    color: #eee0b9;
+
+    margin: 8px 0;
+}
+
+
+/* divider */
+
+.seal-divider {
+    width: 70px;
+    height: 1px;
+
+    margin: 13px 0 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d7b56d,
+            transparent
+        );
+}
+
+
+/* click */
+
+.click-enter {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: clamp(8px, 0.75vw, 11px);
+
+    letter-spacing: 3px;
+
+    color: #f0d994;
+
+    transition:
+        letter-spacing 0.4s ease,
+        color 0.4s ease;
+}
+
+
+/* seal hover */
+
+.royal-seal:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.035);
+
+    filter:
+        drop-shadow(0 15px 30px rgba(0,0,0,0.9))
+        drop-shadow(0 0 25px rgba(215,181,109,0.25));
+}
+
+.royal-seal:hover .click-enter {
+    letter-spacing: 4px;
+    color: #fff1bd;
+}
+
+
+/* =========================================================
+   BOTTOM ORNAMENT
+   ========================================================= */
+
+.gate-bottom {
+    position: absolute;
+
+    left: 50%;
+    bottom: 4%;
+
+    transform: translateX(-50%);
+
+    width: min(45vw, 500px);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: #d7b56d;
+}
+
+.gate-bottom span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(215,181,109,0.7)
+        );
+}
+
+.gate-bottom span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(215,181,109,0.7),
+            transparent
+        );
+}
+
+.bottom-ornament {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   OPENING ANIMATION
+   ========================================================= */
+
+.royal-gate.opening .gate-left {
+    transform:
+        rotateY(-92deg)
+        translateX(-5%);
+}
+
+.royal-gate.opening .gate-right {
+    transform:
+        rotateY(92deg)
+        translateX(5%);
+}
+
+
+/* seal disappears */
+
+.royal-gate.opening .royal-seal {
+    transform:
+        translate(-50%, -50%)
+        scale(1.35);
+
+    opacity: 0;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.5s ease;
+}
+
+
+/* gate fade */
+
+.royal-gate.opened {
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .main-gate {
+        width: 92vw;
+        height: 76vh;
+    }
+
+    .royal-pillar {
+        width: 30px;
+    }
+
+    .gate-door {
+        border-width: 2px;
+    }
+
+    .gate-door::before {
+        inset: 12px;
+    }
+
+    .gate-decoration {
+        width: 22px;
+        height: 22px;
+    }
+
+    .gate-arch {
+        left: 13%;
+        right: 13%;
+    }
+
+    .royal-seal {
+        width: min(65vw, 285px);
+    }
+
+    .seal-outer {
+        padding: 7px;
+    }
+
+    .seal-middle {
+        padding: 7px;
+    }
+
+    .gate-bottom {
+        width: 65vw;
+        bottom: 3%;
+    }
+
+    .bottom-ornament {
+        font-size: 14px;
+    }
+}
+
+
+/* very small phones */
+
+@media (max-width: 380px) {
+
+    .main-gate {
+        height: 72vh;
+    }
+
+    .royal-seal {
+        width: 235px;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 40px;
+    }
+
+    .seal-small {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+}
