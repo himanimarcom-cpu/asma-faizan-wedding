@@ -1,467 +1,285 @@
-// =========================================================
-// ASMA & FAIZAN — PREMIUM WEDDING INVITATION
-// JAVASCRIPT
-// =========================================================
+/* =========================================================
+   ASMA & FAIZAN — CLEAN MASTER JAVASCRIPT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const loader = document.getElementById("loader");
+  const cover = document.getElementById("cover");
+  const royalGate = document.getElementById("royalGate");
+  const enterWedding = document.getElementById("enterWedding");
+  const invitation = document.getElementById("invitation");
+  const musicButton = document.getElementById("musicButton");
+
+  document.body.classList.add("wedding-locked");
 
 
-// =========================================================
-// PAGE LOADER
-// =========================================================
+  /* =======================================================
+     LOADER
+  ======================================================= */
 
-window.addEventListener("load", function () {
-
-    const loader = document.getElementById("loader");
-
-    setTimeout(function () {
-
-        loader.classList.add("hide");
-
-    }, 1200);
-
-});
-
-
-// =========================================================
-// ROYAL GATE — UNLOCK & OPEN
-// =========================================================
-
-const gateLock = document.getElementById("gateLock");
-const cover = document.getElementById("cover");
-const invitation = document.getElementById("invitation");
-const musicButton = document.getElementById("musicButton");
-
-let gateOpened = false;
-
-
-gateLock.addEventListener("click", function () {
-
-    // Prevent multiple clicks
-    if (gateOpened) {
-        return;
+  window.setTimeout(function () {
+    if (loader) {
+      loader.classList.add("hide");
     }
-
-    gateOpened = true;
-
-
-    // ---------------------------------------------
-    // STEP 1 — UNLOCK THE LOCK
-    // ---------------------------------------------
-
-    cover.classList.add("gate-unlocked");
+  }, 900);
 
 
-    // ---------------------------------------------
-    // STEP 2 — WAIT FOR GATE TO OPEN
-    // ---------------------------------------------
+  /* =======================================================
+     ROYAL GATE OPEN
+  ======================================================= */
 
-    setTimeout(function () {
+  if (enterWedding && royalGate && cover && invitation) {
 
-        // Fade away the opening cover
-        cover.style.transition =
-            "opacity 1.2s ease, transform 1.5s ease";
+    enterWedding.addEventListener("click", function () {
 
-        cover.style.opacity = "0";
-        cover.style.transform = "scale(1.04)";
+      if (royalGate.classList.contains("opening")) return;
 
+      enterWedding.disabled = true;
 
-    }, 2200);
+      royalGate.classList.add("opening");
 
 
-    // ---------------------------------------------
-    // STEP 3 — SHOW MAIN INVITATION
-    // ---------------------------------------------
+      /*
+        Gate opening animation ke baad
+        main invitation show hoga.
+      */
 
-    setTimeout(function () {
+      window.setTimeout(function () {
 
-        cover.style.display = "none";
+        royalGate.classList.add("opened");
 
         invitation.classList.add("show");
 
-        musicButton.classList.add("show");
+        document.body.classList.remove("wedding-locked");
 
 
-        // Start countdown
-        updateCountdown();
+        if (musicButton) {
+          musicButton.classList.add("show");
+        }
 
 
-        // Start slideshow
-        startSlideshow();
-
-
-        // Scroll to top
         window.scrollTo({
-            top: 0,
-            behavior: "instant"
+          top: 0,
+          behavior: "smooth"
         });
 
+      }, 2100);
 
-    }, 3400);
+    });
 
-});
-
-
-// =========================================================
-// COUNTDOWN
-// =========================================================
-
-const weddingDate = new Date(
-    "December 14, 2026 19:00:00"
-).getTime();
+  }
 
 
-function updateCountdown() {
+  /* =======================================================
+     COUNTDOWN
+     14 DECEMBER 2026 — 7:00 PM IST
+  ======================================================= */
 
-    const now = new Date().getTime();
+  const weddingDate =
+    new Date("2026-12-14T19:00:00+05:30").getTime();
+
+
+  function updateCountdown() {
+
+    const now = Date.now();
 
     const distance = weddingDate - now;
 
 
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+
+    if (
+      !daysEl ||
+      !hoursEl ||
+      !minutesEl ||
+      !secondsEl
+    ) {
+      return;
+    }
+
+
     if (distance <= 0) {
 
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+      daysEl.textContent = "00";
+      hoursEl.textContent = "00";
+      minutesEl.textContent = "00";
+      secondsEl.textContent = "00";
 
-        return;
-
+      return;
     }
 
 
-    const days = Math.floor(
+    const days =
+      Math.floor(
         distance / (1000 * 60 * 60 * 24)
-    );
-
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
+      );
 
 
-    document.getElementById("days").innerText =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
-
-}
+    const hours =
+      Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+      );
 
 
-// Update every second
-setInterval(updateCountdown, 1000);
+    const minutes =
+      Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+      );
 
 
-// =========================================================
-// SLIDESHOW
-// =========================================================
-
-let slideIndex = 0;
-
-let slideshowTimer;
+    const seconds =
+      Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+      );
 
 
-function showSlide(index) {
-
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
+    daysEl.textContent =
+      String(days).padStart(2, "0");
 
 
-    if (slides.length === 0) {
-        return;
+    hoursEl.textContent =
+      String(hours).padStart(2, "0");
+
+
+    minutesEl.textContent =
+      String(minutes).padStart(2, "0");
+
+
+    secondsEl.textContent =
+      String(seconds).padStart(2, "0");
+
+  }
+
+
+  updateCountdown();
+
+  window.setInterval(
+    updateCountdown,
+    1000
+  );
+
+
+  /* =======================================================
+     SLIDER
+  ======================================================= */
+
+  let slideIndex = 1;
+
+
+  function showSlide(number) {
+
+    const slides =
+      document.querySelectorAll(".slide");
+
+    const dots =
+      document.querySelectorAll(".dot");
+
+
+    if (!slides.length) return;
+
+
+    if (number > slides.length) {
+      slideIndex = 1;
     }
 
 
-    if (index >= slides.length) {
-        slideIndex = 0;
-    }
-
-    if (index < 0) {
-        slideIndex = slides.length - 1;
+    if (number < 1) {
+      slideIndex = slides.length;
     }
 
 
     slides.forEach(function (slide) {
 
-        slide.classList.remove("active");
+      slide.classList.remove("active");
 
     });
 
 
     dots.forEach(function (dot) {
 
-        dot.classList.remove("active-dot");
+      dot.classList.remove("active-dot");
 
     });
 
 
-    slides[slideIndex].classList.add("active");
+    slides[slideIndex - 1]
+      .classList.add("active");
 
 
-    if (dots[slideIndex]) {
+    if (dots[slideIndex - 1]) {
 
-        dots[slideIndex].classList.add("active-dot");
+      dots[slideIndex - 1]
+        .classList.add("active-dot");
 
     }
 
-}
+  }
 
 
-function changeSlide(direction) {
+  window.changeSlide = function (step) {
 
-    slideIndex += direction;
+    slideIndex += step;
 
     showSlide(slideIndex);
 
-    resetSlideshow();
-
-}
+  };
 
 
-function currentSlide(number) {
+  window.currentSlide = function (number) {
 
-    slideIndex = number - 1;
+    slideIndex = number;
 
     showSlide(slideIndex);
 
-    resetSlideshow();
-
-}
+  };
 
 
-function startSlideshow() {
-
-    showSlide(slideIndex);
-
-    slideshowTimer = setInterval(function () {
-
-        slideIndex++;
-
-        showSlide(slideIndex);
-
-    }, 5000);
-
-}
+  showSlide(slideIndex);
 
 
-function resetSlideshow() {
+  /* =======================================================
+     AUTO SLIDER
+  ======================================================= */
 
-    clearInterval(slideshowTimer);
+  window.setInterval(function () {
 
-    slideshowTimer = setInterval(function () {
+    if (
+      invitation &&
+      invitation.classList.contains("show")
+    ) {
 
-        slideIndex++;
+      slideIndex += 1;
 
-        showSlide(slideIndex);
-
-    }, 5000);
-
-}
-
-
-// =========================================================
-// MUSIC
-// =========================================================
-
-let musicPlaying = false;
-
-let audio;
-
-
-/*
-   IMPORTANT:
-
-   Abhi audio file add nahi ki gayi hai.
-
-   Jab hum wedding music upload karenge,
-   yahan uski file connect karenge.
-
-   Example:
-
-   audio = new Audio("music/wedding.mp3");
-*/
-
-
-musicButton.addEventListener("click", function () {
-
-    if (!audio) {
-
-        alert(
-            "Wedding music will be added in the next step."
-        );
-
-        return;
+      showSlide(slideIndex);
 
     }
 
-
-    if (musicPlaying) {
-
-        audio.pause();
-
-        musicPlaying = false;
-
-        musicButton.innerHTML = "♪";
-
-    } else {
-
-        audio.play();
-
-        musicPlaying = true;
-
-        musicButton.innerHTML = "Ⅱ";
-
-    }
-
-});
+  }, 5000);
 
 
-// =========================================================
-// SCROLL REVEAL ANIMATION
-// =========================================================
+  /* =======================================================
+     MUSIC BUTTON
+  ======================================================= */
 
-const revealElements = document.querySelectorAll(
-    ".message, .slideshow-section, .events, .countdown-section, .nikah, .venue, .gallery, .rsvp"
-);
+  if (musicButton) {
 
+    musicButton.addEventListener(
+      "click",
+      function () {
 
-const revealObserver = new IntersectionObserver(
-    function (entries) {
+        musicButton.classList.toggle("playing");
 
-        entries.forEach(function (entry) {
-
-            if (entry.isIntersecting) {
-
-                entry.target.style.opacity = "1";
-
-                entry.target.style.transform =
-                    "translateY(0)";
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.12
-    }
-);
-
-
-revealElements.forEach(function (element) {
-
-    element.style.opacity = "0";
-
-    element.style.transform = "translateY(35px)";
-
-    element.style.transition =
-        "opacity 1s ease, transform 1s ease";
-
-    revealObserver.observe(element);
-
-});
-
-
-// =========================================================
-// MOBILE TOUCH SWIPE FOR SLIDESHOW
-// =========================================================
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-
-const slider = document.querySelector(".slider");
-
-
-if (slider) {
-
-    slider.addEventListener(
-        "touchstart",
-        function (event) {
-
-            touchStartX =
-                event.changedTouches[0].screenX;
-
-        },
-        { passive: true }
+      }
     );
 
-
-    slider.addEventListener(
-        "touchend",
-        function (event) {
-
-            touchEndX =
-                event.changedTouches[0].screenX;
-
-            handleSwipe();
-
-        },
-        { passive: true }
-    );
-
-}
-
-
-function handleSwipe() {
-
-    const swipeDistance =
-        touchEndX - touchStartX;
-
-
-    if (Math.abs(swipeDistance) < 50) {
-
-        return;
-
-    }
-
-
-    if (swipeDistance < 0) {
-
-        changeSlide(1);
-
-    } else {
-
-        changeSlide(-1);
-
-    }
-
-}
-
-
-// =========================================================
-// PREVENT IMAGE DRAGGING
-// =========================================================
-
-document.querySelectorAll("img").forEach(function (image) {
-
-    image.addEventListener("dragstart", function (event) {
-
-        event.preventDefault();
-
-    });
+  }
 
 });
-
-
-// =========================================================
-// INITIALIZE
-// =========================================================
-
-showSlide(0);
-updateCountdown();
