@@ -729,3 +729,36 @@
 
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const royalGate = document.getElementById("royalGate");
+    const enterWedding = document.getElementById("enterWedding");
+
+    if (!royalGate || !enterWedding) return;
+
+    // Page initially locked
+    document.body.classList.add("wedding-locked");
+
+    enterWedding.addEventListener("click", function () {
+
+        // Start royal gate animation
+        royalGate.classList.add("opening");
+
+        // Remove button interaction
+        enterWedding.style.pointerEvents = "none";
+
+        // After doors open
+        setTimeout(function () {
+
+            royalGate.classList.add("opened");
+
+            // Unlock page scrolling
+            document.body.classList.remove("wedding-locked");
+
+        }, 1900);
+
+    });
+
+});
+</script>
