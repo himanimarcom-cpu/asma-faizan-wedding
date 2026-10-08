@@ -1,591 +1,705 @@
 /* =========================================================
    ASMA & FAIZAN — PREMIUM MUSLIM WEDDING INVITATION
-   STYLE SHEET
-========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
-
-
-/* =========================================================
-   ROOT
+   CLEAN MASTER STYLESHEET
 ========================================================= */
 
 :root {
-    --emerald: #071f19;
-    --emerald-light: #0d3329;
-    --emerald-soft: #123f32;
+  --emerald: #071f19;
+  --emerald-dark: #03120e;
+  --emerald-light: #0e3329;
+  --emerald-mid: #123f32;
 
-    --gold: #d7b56d;
-    --gold-light: #f0d99b;
-    --gold-dark: #9b7838;
+  --gold: #d7b56d;
+  --gold-light: #f2dca0;
+  --gold-dark: #8f6c32;
 
-    --ivory: #f8f2e5;
-    --cream: #efe5d0;
+  --ivory: #f8f2e5;
+  --cream: #efe5d0;
 
-    --white: #ffffff;
-
-    --serif: "Cormorant Garamond", serif;
-    --script: "Great Vibes", cursive;
-    --sans: "Montserrat", sans-serif;
+  --serif: "Cormorant Garamond", serif;
+  --script: "Great Vibes", cursive;
+  --sans: "Montserrat", sans-serif;
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background: var(--emerald);
-    color: var(--ivory);
-    font-family: var(--sans);
-    overflow-x: hidden;
+  background: var(--emerald);
+  color: var(--ivory);
+  font-family: var(--sans);
+  overflow-x: hidden;
 }
 
+body.wedding-locked {
+  overflow: hidden;
+}
 
-/* =========================================================
-   SELECTION
-========================================================= */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
 
 ::selection {
-    background: var(--gold);
-    color: var(--emerald);
+  background: var(--gold);
+  color: var(--emerald-dark);
 }
-
 
 /* =========================================================
    COMMON
 ========================================================= */
 
 .container {
-    width: min(1100px, 90%);
-    margin: auto;
-    position: relative;
-    z-index: 3;
+  width: min(1100px, 90%);
+  margin: auto;
+  position: relative;
+  z-index: 3;
 }
 
 .section {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .eyebrow {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 4px;
-    font-weight: 500;
-    margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  margin-bottom: 18px;
 }
 
 .gold-line {
-    width: 70px;
-    height: 1px;
-    background: var(--gold);
-    margin: 25px auto;
+  width: 70px;
+  height: 1px;
+  background: var(--gold);
+  margin: 25px auto;
 }
 
 .gold-divider {
-    color: var(--gold);
-    font-size: 15px;
-    letter-spacing: 10px;
-    margin: 22px 0;
+  color: var(--gold);
+  font-size: 15px;
+  letter-spacing: 10px;
+  margin: 22px 0;
 }
 
+.section-pattern,
+.islamic-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .10;
+  background-image:
+    linear-gradient(30deg, transparent 40%, rgba(215,181,109,.35) 41%, transparent 42%),
+    linear-gradient(150deg, transparent 40%, rgba(215,181,109,.35) 41%, transparent 42%),
+    linear-gradient(60deg, transparent 40%, rgba(215,181,109,.25) 41%, transparent 42%),
+    linear-gradient(120deg, transparent 40%, rgba(215,181,109,.25) 41%, transparent 42%);
+  background-size: 90px 90px;
+}
 
 /* =========================================================
    LOADER
 ========================================================= */
 
 #loader {
-    position: fixed;
-    inset: 0;
-    background: #04140f;
-    z-index: 99999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #04140f;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 #loader.hide {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .loader-inner {
-    text-align: center;
-    padding: 30px;
+  text-align: center;
+  padding: 30px;
 }
 
 .loader-bismillah {
-    color: var(--gold-light);
-    font-family: var(--serif);
-    font-size: 24px;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 24px;
 }
 
 .loader-line {
-    width: 100px;
-    height: 1px;
-    background: var(--gold);
-    margin: 20px auto;
-    animation: loaderLine 1.5s infinite alternate;
+  width: 90px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto;
+  animation: loaderLine 1.5s infinite alternate;
 }
 
 .loader-inner p {
-    color: rgba(248, 242, 229, .55);
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  color: rgba(248,242,229,.55);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 @keyframes loaderLine {
-    from {
-        width: 40px;
-    }
-
-    to {
-        width: 120px;
-    }
+  from { width: 40px; }
+  to { width: 120px; }
 }
-
-
-/* =========================================================
-   ISLAMIC PATTERN
-========================================================= */
-
-.islamic-pattern,
-.section-pattern {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: .12;
-
-    background-image:
-        linear-gradient(30deg, transparent 40%, rgba(215,181,109,.35) 41%, transparent 42%),
-        linear-gradient(150deg, transparent 40%, rgba(215,181,109,.35) 41%, transparent 42%),
-        linear-gradient(60deg, transparent 40%, rgba(215,181,109,.25) 41%, transparent 42%),
-        linear-gradient(120deg, transparent 40%, rgba(215,181,109,.25) 41%, transparent 42%);
-
-    background-size: 90px 90px;
-}
-
 
 /* =========================================================
    COVER
 ========================================================= */
 
 .cover {
-    min-height: 100vh;
-    min-height: 100svh;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(215,181,109,.12),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #04150f,
-            #09261f 55%,
-            #04150f
-        );
-
-    overflow: hidden;
-}
-
-.cover::before {
-    content: "";
-    position: absolute;
-    width: 520px;
-    height: 520px;
-
-    border: 1px solid rgba(215,181,109,.16);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 0 25px rgba(215,181,109,.025),
-        0 0 0 50px rgba(215,181,109,.02);
-
-    animation: slowRotate 35s linear infinite;
-}
-
-@keyframes slowRotate {
-    to {
-        transform: rotate(360deg);
-    }
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(215,181,109,.13), transparent 35%),
+    linear-gradient(145deg, #020b08, #09261f 52%, #020b08);
+  overflow: hidden;
 }
 
 .cover-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 20%,
-            rgba(0,0,0,.6) 100%
-        );
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,.68) 100%);
+  pointer-events: none;
 }
 
-.cover-content {
-    position: relative;
-    z-index: 5;
-
-    width: 90%;
-    max-width: 600px;
-
-    animation: coverReveal 2s ease forwards;
+.cover::before {
+  content: "";
+  position: absolute;
+  width: min(650px, 90vw);
+  height: min(650px, 90vw);
+  border: 1px solid rgba(215,181,109,.13);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 28px rgba(215,181,109,.025),
+    0 0 0 56px rgba(215,181,109,.018);
+  animation: slowRotate 45s linear infinite;
 }
 
-@keyframes coverReveal {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes slowRotate {
+  to { transform: rotate(360deg); }
 }
-
 
 /* =========================================================
-   BISMILLAH
+   ROYAL GATE
 ========================================================= */
 
-.bismillah {
-    color: var(--gold-light);
-
-    font-family: var(--serif);
-
-    font-size: 25px;
-
-    margin-bottom: 35px;
-
-    text-shadow:
-        0 0 20px rgba(215,181,109,.15);
+.royal-gate {
+  position: relative;
+  width: min(1100px, 100vw);
+  height: min(850px, 92vh);
+  height: min(850px, 92svh);
+  z-index: 5;
+  perspective: 1800px;
+  filter: drop-shadow(0 30px 35px rgba(0,0,0,.72));
 }
 
+/* palace lights */
+.gate-light {
+  position: absolute;
+  top: 10%;
+  width: 280px;
+  height: 500px;
+  filter: blur(65px);
+  background: rgba(215,181,109,.10);
+  pointer-events: none;
+}
+
+.light-left { left: -120px; }
+.light-right { right: -120px; }
+
+/* pillars */
+.royal-pillar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(55px, 11vw, 145px);
+  background:
+    linear-gradient(
+      90deg,
+      #090b09,
+      #4b3a1f 24%,
+      #c49b4e 48%,
+      #503e21 72%,
+      #090b09
+    );
+  border-left: 2px solid rgba(215,181,109,.72);
+  border-right: 2px solid rgba(215,181,109,.72);
+  box-shadow:
+    inset 0 0 25px rgba(0,0,0,.85),
+    0 0 35px rgba(0,0,0,.65);
+}
+
+.pillar-left { left: 0; }
+.pillar-right { right: 0; }
+
+.pillar-cap {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82%;
+  height: 75px;
+  border-radius: 50% 50% 10px 10px;
+  background: linear-gradient(90deg, #5b4421, #d9b96c, #634c27);
+  box-shadow: 0 0 20px rgba(215,181,109,.25);
+}
+
+.pillar-pattern {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 10%;
+  border: 1px solid rgba(230,201,128,.42);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(215,181,109,.15) 9px,
+      transparent 10px
+    );
+}
+
+/* main doors */
+.main-gate {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%);
+  width: min(78vw, 920px);
+  height: min(78vh, 760px);
+  display: flex;
+  perspective: 1800px;
+  filter: drop-shadow(0 30px 35px rgba(0,0,0,.75));
+}
+
+.gate-door {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(44,76,58,.68), transparent 50%),
+    linear-gradient(135deg, #06140f, #0c2a20 50%, #03100c);
+  border: 3px solid #b9934c;
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,.82),
+    inset 0 0 12px rgba(215,181,109,.35);
+  transition: transform 1.9s cubic-bezier(.77,0,.18,1);
+}
+
+.gate-left {
+  transform-origin: left center;
+  border-right: 1px solid rgba(215,181,109,.8);
+}
+
+.gate-right {
+  transform-origin: right center;
+  border-left: 1px solid rgba(215,181,109,.8);
+}
+
+.gate-door::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 2px solid rgba(215,181,109,.52);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 13px,
+      rgba(215,181,109,.07) 14px,
+      transparent 15px
+    );
+  box-shadow: inset 0 0 30px rgba(0,0,0,.72);
+}
+
+.gate-door::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: .65;
+}
+
+.gate-arch {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  top: 9%;
+  height: 36%;
+  border: 3px solid #c7a45a;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  box-shadow: inset 0 0 20px rgba(215,181,109,.15);
+}
+
+.gate-panel {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  border: 1px solid rgba(215,181,109,.58);
+  background: linear-gradient(135deg, rgba(215,181,109,.07), rgba(0,0,0,.20));
+  box-shadow: inset 0 0 18px rgba(0,0,0,.62);
+}
+
+.panel-top { top: 10%; height: 30%; }
+.panel-middle { top: 43%; height: 22%; }
+.panel-bottom { bottom: 6%; height: 25%; }
+
+.gate-decoration {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(215,181,109,.15);
+}
+
+.decoration-1 { top: 13%; left: 8%; }
+.decoration-2 { top: 13%; right: 8%; }
+.decoration-3 {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.vertical-gold-line {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  width: 2px;
+  background:
+    linear-gradient(
+      transparent,
+      #d7b56d 20%,
+      #f0d994 50%,
+      #d7b56d 80%,
+      transparent
+    );
+  opacity: .75;
+}
+
+.gate-left .vertical-gold-line { right: 4%; }
+.gate-right .vertical-gold-line { left: 4%; }
 
 /* =========================================================
-   COVER TEXT
+   ENTRY BEHIND GATE
 ========================================================= */
 
-.small-heading {
-    font-family: var(--sans);
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color: rgba(248,242,229,.7);
-
-    margin-bottom: 20px;
+.gate-entry {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(72vw, 620px);
+  transform: translate(-50%, -50%) scale(.92);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  text-align: center;
+  transition: opacity 1.2s ease, transform 1.6s ease;
 }
 
-.names h1 {
-    font-family: var(--serif);
-
-    font-size: clamp(60px, 13vw, 110px);
-
-    font-weight: 400;
-
-    line-height: .82;
-
-    letter-spacing: 5px;
-
-    color: var(--ivory);
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.3);
+.entry-glow {
+  position: absolute;
+  inset: -25%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,217,155,.17), transparent 65%);
+  filter: blur(20px);
 }
 
-.names .weds {
-    font-family: var(--script);
-
-    color: var(--gold-light);
-
-    font-size: 42px;
-
-    margin: 17px 0;
-
-    line-height: 1;
+.entry-content {
+  position: relative;
+  z-index: 2;
 }
 
-.date {
-    font-family: var(--serif);
-
-    color: var(--gold-light);
-
-    font-size: 20px;
-
-    letter-spacing: 5px;
+.entry-bismillah {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 32px);
+  margin-bottom: 28px;
 }
 
-.date span {
-    margin: 0 7px;
-    opacity: .6;
+.entry-small {
+  color: rgba(248,242,229,.72);
+  font-size: 9px;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
 }
 
+.entry-name {
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: clamp(65px, 11vw, 110px);
+  line-height: .78;
+  letter-spacing: 6px;
+}
+
+.entry-weds {
+  color: var(--gold-light);
+  font-family: var(--script);
+  font-size: clamp(40px, 6vw, 58px);
+  margin: 18px 0;
+}
+
+.entry-date {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 21px;
+  letter-spacing: 5px;
+}
 
 /* =========================================================
-   OPEN BUTTON
+   ROYAL SEAL
 ========================================================= */
 
-.open-button {
-    margin-top: 45px;
-
-    padding: 17px 28px;
-
-    border: 1px solid var(--gold);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(215,181,109,.12),
-            rgba(215,181,109,.03)
-        );
-
-    color: var(--gold-light);
-
-    font-family: var(--sans);
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    cursor: pointer;
-
-    transition: all .4s ease;
-
-    position: relative;
-
-    overflow: hidden;
+.royal-seal {
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(230px, 30vw, 355px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 12px 25px rgba(0,0,0,.82));
+  transition: transform .5s ease, filter .5s ease, opacity .7s ease;
 }
 
-.open-button::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 100%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.2),
-            transparent
-        );
-
-    transition: .6s;
+.seal-outer {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 0deg,
+      #76531d,
+      #f0d994,
+      #9d732d,
+      #f6df9c,
+      #73501d,
+      #d7b56d,
+      #76531d
+    );
+  box-shadow:
+    0 0 0 4px #1b1408,
+    0 0 0 7px #b58b40,
+    0 0 40px rgba(215,181,109,.35);
 }
 
-.open-button:hover::before {
-    left: 100%;
+.seal-middle {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 50%;
+  background: #071812;
+  border: 2px solid #e1c47a;
+  box-shadow: inset 0 0 35px rgba(0,0,0,.8);
 }
 
-.open-button:hover {
-    background: var(--gold);
-    color: var(--emerald);
-
-    box-shadow:
-        0 0 30px rgba(215,181,109,.25);
-
-    transform: translateY(-3px);
+.seal-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(215,181,109,.65);
+  background: radial-gradient(circle, #173329, #06120e 70%);
 }
 
-.open-button span {
-    margin: 0 8px;
+.seal-inner::before {
+  content: "✦";
+  position: absolute;
+  top: 11%;
+  color: var(--gold);
+  font-size: 19px;
 }
 
+.seal-small {
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.bride-name,
+.groom-name {
+  color: #f1d58e;
+  font-family: var(--script);
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: .88;
+  text-shadow: 0 2px 5px rgba(0,0,0,.8);
+}
+
+.seal-weds {
+  color: #eee0b9;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  margin: 7px 0;
+}
+
+.seal-divider {
+  width: 70px;
+  height: 1px;
+  margin: 12px 0 9px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.click-enter {
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 3px;
+  transition: letter-spacing .4s ease, color .4s ease;
+}
+
+.royal-seal:hover {
+  transform: translate(-50%, -50%) scale(1.04);
+  filter:
+    drop-shadow(0 15px 30px rgba(0,0,0,.9))
+    drop-shadow(0 0 25px rgba(215,181,109,.28));
+}
+
+.royal-seal:hover .click-enter {
+  letter-spacing: 4px;
+  color: #fff1bd;
+}
 
 /* =========================================================
-   SCROLL HINT
+   GATE BOTTOM
 ========================================================= */
 
-.scroll-hint {
-    margin-top: 20px;
-
-    font-size: 7px;
-
-    letter-spacing: 3px;
-
-    color: rgba(248,242,229,.35);
-
-    animation: pulse 2s infinite;
+.gate-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  width: min(45vw, 500px);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--gold);
 }
 
-@keyframes pulse {
-    50% {
-        opacity: .3;
-    }
+.gate-bottom span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215,181,109,.7));
 }
 
+.gate-bottom span:last-child {
+  background: linear-gradient(90deg, rgba(215,181,109,.7), transparent);
+}
+
+/* =========================================================
+   GATE OPEN ANIMATION
+========================================================= */
+
+.royal-gate.opening .gate-left {
+  transform: rotateY(-92deg) translateX(-5%);
+}
+
+.royal-gate.opening .gate-right {
+  transform: rotateY(92deg) translateX(5%);
+}
+
+.royal-gate.opening .royal-seal {
+  transform: translate(-50%, -50%) scale(1.32);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.royal-gate.opening .gate-entry {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.royal-gate.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.1s ease, visibility 1.1s ease;
+}
 
 /* =========================================================
    INVITATION
 ========================================================= */
 
 .invitation {
-    display: none;
-
-    background: var(--emerald);
+  display: block;
+  background: var(--emerald);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 1.1s ease, transform 1.1s ease, visibility 1.1s ease;
 }
 
 .invitation.show {
-    display: block;
-
-    animation: invitationReveal 1.5s ease;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
-
-@keyframes invitationReveal {
-    from {
-        opacity: 0;
-        transform: scale(1.02);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(215,181,109,.10),
-            transparent 45%
-        ),
-        var(--emerald);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(215,181,109,.10), transparent 45%),
+    var(--emerald);
 }
 
 .hero-content {
-    position: relative;
-    z-index: 3;
-
-    padding: 80px 20px;
+  position: relative;
+  z-index: 3;
+  padding: 80px 20px;
 }
 
-.hero h2 {
-    font-family: var(--serif);
-
-    font-size: clamp(55px, 12vw, 100px);
-
-    font-weight: 400;
-
-    line-height: .9;
-
-    color: var(--ivory);
-
-    letter-spacing: 3px;
-}
-
-.hero h2 span {
-    display: block;
-
-    font-family: var(--script);
-
-    color: var(--gold-light);
-
-    font-size: 50px;
-
-    margin: 20px 0;
-}
-
-.ornament {
-    color: var(--gold);
-
-    margin: 30px 0;
-
-    letter-spacing: 8px;
-}
-
-.hero-date {
-    font-family: var(--serif);
-
-    color: var(--gold-light);
-
-    font-size: 23px;
-
-    letter-spacing: 2px;
-}
-
-.hero-location {
-    margin-top: 14px;
-
-    color: rgba(248,242,229,.65);
-
-    font-size: 11px;
-
-    line-height: 1.8;
-
-    letter-spacing: 1px;
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-.message {
-    padding: 110px 0;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            rgba(7,31,25,.94),
-            rgba(7,31,25,.94)
-        ),
-        radial-gradient(
-            circle at center,
-            #194638,
-            var(--emerald)
-        );
-}
-
+.hero h2,
 .message h2,
 .slideshow-section h2,
 .events h2,
@@ -594,2241 +708,745 @@ body {
 .gallery h2,
 .rsvp h2,
 .closing h2 {
-    font-family: var(--serif);
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ivory);
+}
 
-    font-size: clamp(42px, 8vw, 68px);
+.hero h2 {
+  font-size: clamp(58px, 12vw, 105px);
+  letter-spacing: 3px;
+}
 
-    font-weight: 400;
+.hero h2 span {
+  display: block;
+  color: var(--gold-light);
+  font-family: var(--script);
+  font-size: 52px;
+  margin: 20px 0;
+}
 
-    line-height: 1;
+.ornament {
+  color: var(--gold);
+  margin: 30px 0;
+  letter-spacing: 8px;
+}
 
-    color: var(--ivory);
+.hero-date {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 23px;
+  letter-spacing: 2px;
+}
+
+.hero-location {
+  margin-top: 14px;
+  color: rgba(248,242,229,.65);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+  padding: 110px 0;
+  text-align: center;
+  background: linear-gradient(rgba(7,31,25,.94), rgba(7,31,25,.94));
+}
+
+.message h2,
+.slideshow-section h2,
+.events h2,
+.countdown-section h2,
+.venue h2,
+.gallery h2,
+.rsvp h2 {
+  font-size: clamp(42px, 8vw, 68px);
 }
 
 .message-text {
-    max-width: 600px;
-
-    margin: auto;
-
-    color: rgba(248,242,229,.7);
-
-    font-family: var(--serif);
-
-    font-size: 20px;
-
-    line-height: 1.8;
+  max-width: 600px;
+  margin: auto;
+  color: rgba(248,242,229,.70);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.8;
 }
-
 
 /* =========================================================
    SLIDESHOW
 ========================================================= */
 
 .slideshow-section {
-    padding: 100px 0;
-
-    text-align: center;
-
-    background: #061b15;
+  padding: 100px 0;
+  text-align: center;
+  background: #061b15;
 }
 
 .slider {
-    position: relative;
-
-    max-width: 760px;
-
-    height: 470px;
-
-    margin: 50px auto 20px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(215,181,109,.45);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
+  position: relative;
+  max-width: 760px;
+  height: 470px;
+  margin: 50px auto 20px;
+  overflow: hidden;
+  border: 1px solid rgba(215,181,109,.45);
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .slide {
-    position: absolute;
-
-    inset: 0;
-
-    opacity: 0;
-
-    transition:
-        opacity 1.2s ease,
-        transform 5s ease;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
 }
 
 .slide.active {
-    opacity: 1;
+  opacity: 1;
 }
 
 .slide-placeholder {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(215,181,109,.18),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #0b392d,
-            #061c15
-        );
-
-    font-family: var(--serif);
-
-    font-size: 30px;
-
-    letter-spacing: 5px;
-
-    color: var(--gold-light);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(215,181,109,.18), transparent 45%),
+    linear-gradient(135deg, #0b392d, #061c15);
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 30px;
+  letter-spacing: 5px;
 }
 
 .slider-btn {
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-
-    border: 1px solid var(--gold);
-
-    background: rgba(4,20,15,.7);
-
-    color: var(--gold-light);
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    z-index: 5;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: rgba(4,20,15,.72);
+  color: var(--gold-light);
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 5;
 }
 
-.slider-btn.prev {
-    left: 20px;
-}
-
-.slider-btn.next {
-    right: 20px;
-}
+.slider-btn.prev { left: 20px; }
+.slider-btn.next { right: 20px; }
 
 .slider-dots {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 18px;
 }
 
 .dot {
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: rgba(215,181,109,.3);
-
-    cursor: pointer;
-
-    transition: .3s;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(215,181,109,.3);
+  cursor: pointer;
+  transition: .3s;
 }
 
 .dot.active-dot {
-    background: var(--gold);
-
-    transform: scale(1.5);
+  background: var(--gold);
+  transform: scale(1.5);
 }
-
 
 /* =========================================================
    EVENTS
 ========================================================= */
 
 .events {
-    padding: 110px 0;
-
-    text-align: center;
-
-    background: var(--emerald);
+  padding: 110px 0;
+  text-align: center;
+  background: var(--emerald);
 }
 
 .event-grid {
-    max-width: 850px;
-
-    margin: 55px auto 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 25px;
+  max-width: 850px;
+  margin: 55px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
 }
 
 .event-card {
-    padding: 50px 30px;
-
-    border: 1px solid rgba(215,181,109,.35);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(215,181,109,.07),
-            rgba(0,0,0,.08)
-        );
-
-    position: relative;
-
-    transition: .4s;
+  padding: 50px 30px;
+  border: 1px solid rgba(215,181,109,.35);
+  background: linear-gradient(145deg, rgba(215,181,109,.07), rgba(0,0,0,.08));
+  transition: .4s;
 }
 
 .event-card:hover {
-    transform: translateY(-7px);
-
-    border-color: var(--gold);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.2);
+  transform: translateY(-7px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 50px rgba(0,0,0,.2);
 }
 
 .event-icon {
-    color: var(--gold-light);
-
-    font-size: 30px;
-
-    margin-bottom: 20px;
+  color: var(--gold-light);
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .event-label {
-    color: var(--gold);
-
-    letter-spacing: 3px;
-
-    font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 9px;
 }
 
 .event-card h3 {
-    font-family: var(--serif);
-
-    font-size: 27px;
-
-    font-weight: 400;
-
-    margin: 18px 0 8px;
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+  margin: 18px 0 8px;
 }
 
 .event-time {
-    color: var(--gold-light);
-
-    font-family: var(--serif);
-
-    font-size: 30px;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 30px;
 }
 
 .event-location {
-    margin-top: 18px;
-
-    color: rgba(248,242,229,.55);
-
-    font-size: 10px;
-
-    line-height: 1.7;
-
-    letter-spacing: 1px;
+  margin-top: 18px;
+  color: rgba(248,242,229,.55);
+  font-size: 10px;
+  line-height: 1.7;
 }
-
 
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
 .countdown-section {
-    padding: 110px 0;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #174638,
-            var(--emerald)
-        );
+  padding: 110px 0;
+  text-align: center;
+  background: radial-gradient(circle at center, #174638, var(--emerald));
 }
 
 .countdown {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 50px;
 }
 
 .count-box {
-    min-width: 105px;
-
-    padding: 20px 10px;
-
-    border: 1px solid rgba(215,181,109,.3);
-
-    background: rgba(0,0,0,.12);
+  min-width: 105px;
+  padding: 20px 10px;
+  border: 1px solid rgba(215,181,109,.3);
+  background: rgba(0,0,0,.12);
 }
 
 .count-box strong {
-    display: block;
-
-    color: var(--gold-light);
-
-    font-family: var(--serif);
-
-    font-size: 48px;
-
-    font-weight: 400;
+  display: block;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 400;
 }
 
 .count-box span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: rgba(248,242,229,.5);
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
-
-    font-size: 7px;
+  display: block;
+  margin-top: 3px;
+  color: rgba(248,242,229,.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 7px;
 }
-
 
 /* =========================================================
    NIKAH
 ========================================================= */
 
 .nikah {
-    padding: 140px 0;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            rgba(215,181,109,.12),
-            transparent 30%
-        ),
-        #041811;
+  padding: 140px 0;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(215,181,109,.12), transparent 30%),
+    #041811;
 }
 
 .crescent {
-    font-size: 60px;
-
-    color: var(--gold-light);
-
-    margin-bottom: 20px;
-
-    text-shadow:
-        0 0 30px rgba(215,181,109,.2);
+  font-size: 60px;
+  color: var(--gold-light);
+  margin-bottom: 20px;
 }
 
 .nikah h2 {
-    font-family: var(--serif);
-
-    font-size: 80px;
-
-    font-weight: 400;
-
-    color: var(--ivory);
+  color: var(--ivory);
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 400;
 }
 
 .nikah-time {
-    font-family: var(--serif);
-
-    color: var(--gold-light);
-
-    font-size: 32px;
-
-    margin-top: 15px;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 32px;
+  margin-top: 15px;
 }
 
 .nikah-quote {
-    max-width: 550px;
-
-    margin: auto;
-
-    color: rgba(248,242,229,.65);
-
-    font-family: var(--serif);
-
-    font-size: 20px;
-
-    line-height: 1.8;
+  max-width: 550px;
+  margin: auto;
+  color: rgba(248,242,229,.65);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.8;
 }
-
 
 /* =========================================================
    VENUE
 ========================================================= */
 
 .venue {
-    padding: 110px 0;
+  padding: 110px 0;
+  text-align: center;
+  background: #071f19;
+}
 
-    text-align: center;
-
-    background: #071f19;
+.venue h2 {
+  font-size: clamp(48px, 8vw, 70px);
 }
 
 .venue-icon {
-    color: var(--gold-light);
-
-    font-size: 45px;
-
-    margin: 30px 0 15px;
+  color: var(--gold-light);
+  font-size: 45px;
+  margin: 30px 0 15px;
 }
 
 .venue-address {
-    color: rgba(248,242,229,.6);
-
-    line-height: 1.8;
-
-    font-size: 12px;
+  color: rgba(248,242,229,.6);
+  line-height: 1.8;
+  font-size: 12px;
 }
 
 .map-button {
-    display: inline-block;
-
-    margin-top: 30px;
-
-    padding: 14px 28px;
-
-    border: 1px solid var(--gold);
-
-    color: var(--gold-light);
-
-    text-decoration: none;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    transition: .4s;
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 9px;
+  letter-spacing: 3px;
+  transition: .4s;
 }
 
 .map-button:hover {
-    background: var(--gold);
-
-    color: var(--emerald);
+  background: var(--gold);
+  color: var(--emerald);
 }
-
 
 /* =========================================================
    GALLERY
 ========================================================= */
 
 .gallery {
-    padding: 110px 0;
-
-    text-align: center;
-
-    background: #061a14;
+  padding: 110px 0;
+  text-align: center;
+  background: #061a14;
 }
 
 .gallery-grid {
-    max-width: 900px;
-
-    margin: 50px auto 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    grid-auto-rows: 220px;
-
-    gap: 12px;
+  max-width: 900px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 12px;
 }
 
 .gallery-item {
-    overflow: hidden;
-
-    border: 1px solid rgba(215,181,109,.25);
+  overflow: hidden;
+  border: 1px solid rgba(215,181,109,.25);
 }
 
 .gallery-item.large {
-    grid-column: span 2;
-    grid-row: span 2;
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 .gallery-placeholder {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(215,181,109,.15),
-            transparent
-        ),
-        linear-gradient(
-            135deg,
-            #174b3b,
-            #071c16
-        );
-
-    color: rgba(240,217,155,.7);
-
-    font-family: var(--serif);
-
-    font-size: 20px;
-
-    letter-spacing: 3px;
-
-    transition: transform .8s ease;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle, rgba(215,181,109,.15), transparent),
+    linear-gradient(135deg, #174b3b, #071c16);
+  color: rgba(240,217,155,.7);
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: 3px;
+  transition: transform .8s ease;
 }
 
 .gallery-item:hover .gallery-placeholder {
-    transform: scale(1.06);
+  transform: scale(1.06);
 }
-
 
 /* =========================================================
    RSVP
 ========================================================= */
 
 .rsvp {
-    padding: 120px 0;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #123b30,
-            #061b15
-        );
+  padding: 120px 0;
+  text-align: center;
+  background: radial-gradient(circle at center, #123b30, #061b15);
 }
 
-.rsvp-text {
-    max-width: 500px;
-
-    margin: 25px auto;
-
-    font-family: var(--serif);
-
-    font-size: 21px;
-
-    line-height: 1.7;
-
-    color: rgba(248,242,229,.65);
-}
-
-.rsvp-name {
-    font-family: var(--script);
-
-    font-size: 42px;
-
-    color: var(--gold-light);
-
-    margin-top: 30px;
+.rsvp h2 {
+  font-size: clamp(48px, 8vw, 72px);
 }
 
 .rsvp-divider {
-    color: var(--gold);
-
-    margin: 25px;
+  color: var(--gold);
+  margin: 25px;
 }
 
+.rsvp-text {
+  max-width: 500px;
+  margin: 25px auto;
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.7;
+  color: rgba(248,242,229,.65);
+}
+
+.rsvp-name {
+  font-family: var(--script);
+  font-size: 42px;
+  color: var(--gold-light);
+  margin-top: 30px;
+}
 
 /* =========================================================
    CLOSING
 ========================================================= */
 
 .closing {
-    min-height: 80vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(215,181,109,.12),
-            transparent 40%
-        ),
-        #04140f;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(215,181,109,.12), transparent 40%),
+    #04140f;
 }
 
 .closing h2 {
-    font-size: clamp(45px, 10vw, 80px);
-
-    margin-top: 15px;
+  font-size: clamp(45px, 10vw, 80px);
+  margin-top: 15px;
 }
 
 .closing h2 span {
-    color: var(--gold-light);
-
-    font-family: var(--script);
-
-    font-size: .7em;
-
-    margin: 0 10px;
+  color: var(--gold-light);
+  font-family: var(--script);
+  font-size: .7em;
+  margin: 0 10px;
 }
 
 .closing-date {
-    font-family: var(--serif);
-
-    font-size: 20px;
-
-    color: var(--gold-light);
-
-    letter-spacing: 5px;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: 5px;
 }
 
 .thank-you {
-    max-width: 420px;
-
-    margin: 35px auto 0;
-
-    font-family: var(--serif);
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    color: rgba(248,242,229,.55);
+  max-width: 420px;
+  margin: 35px auto 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(248,242,229,.55);
 }
 
-
 /* =========================================================
-   MUSIC BUTTON
+   MUSIC
 ========================================================= */
 
 .music-button {
-    position: fixed;
-
-    right: 20px;
-    bottom: 20px;
-
-    width: 48px;
-    height: 48px;
-
-    border-radius: 50%;
-
-    border: 1px solid var(--gold);
-
-    background: rgba(4,20,15,.9);
-
-    color: var(--gold-light);
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    z-index: 999;
-
-    display: none;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.3);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: rgba(4,20,15,.9);
+  color: var(--gold-light);
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
 }
 
 .music-button.show {
-    display: block;
-
-    animation: musicPulse 2s infinite;
+  display: block;
 }
-
-@keyframes musicPulse {
-    50% {
-        box-shadow:
-            0 0 25px rgba(215,181,109,.25);
-    }
-}
-
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   TABLET
 ========================================================= */
+
+@media (max-width: 900px) {
+  .royal-pillar {
+    width: 45px;
+  }
+
+  .main-gate {
+    width: 88vw;
+  }
+}
 
 @media (max-width: 768px) {
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .slider {
-        height: 400px;
-    }
+  .slider {
+    height: 400px;
+  }
 
-    .event-grid {
-        grid-template-columns: 1fr;
-    }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
 
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+  .gallery-item.large {
+    grid-column: span 2;
+  }
 
-        grid-auto-rows: 180px;
-    }
+  .count-box {
+    min-width: 80px;
+  }
 
-    .gallery-item.large {
-        grid-column: span 2;
-    }
-
-    .count-box {
-        min-width: 80px;
-    }
-
-    .count-box strong {
-        font-size: 38px;
-    }
+  .count-box strong {
+    font-size: 38px;
+  }
 }
-
 
 /* =========================================================
-   RESPONSIVE — MOBILE
-========================================================= */
-
-@media (max-width: 500px) {
-
-    .bismillah {
-        font-size: 20px;
-
-        margin-bottom: 30px;
-    }
-
-    .names h1 {
-        font-size: 62px;
-
-        letter-spacing: 3px;
-    }
-
-    .names .weds {
-        font-size: 36px;
-
-        margin: 14px 0;
-    }
-
-    .date {
-        font-size: 17px;
-
-        letter-spacing: 3px;
-    }
-
-    .open-button {
-        padding: 16px 18px;
-
-        font-size: 8px;
-
-        letter-spacing: 2px;
-    }
-
-    .hero {
-        min-height: 90vh;
-    }
-
-    .hero h2 {
-        font-size: 55px;
-    }
-
-    .hero h2 span {
-        font-size: 40px;
-    }
-
-    .message,
-    .events,
-    .countdown-section,
-    .venue,
-    .gallery,
-    .rsvp {
-        padding: 90px 0;
-    }
-
-    .message h2,
-    .slideshow-section h2,
-    .events h2,
-    .countdown-section h2,
-    .venue h2,
-    .gallery h2,
-    .rsvp h2 {
-        font-size: 43px;
-    }
-
-    .message-text {
-        font-size: 18px;
-
-        padding: 0 10px;
-    }
-
-    .slider {
-        height: 330px;
-
-        margin-top: 35px;
-    }
-
-    .slide-placeholder {
-        font-size: 19px;
-
-        letter-spacing: 3px;
-    }
-
-    .slider-btn {
-        width: 38px;
-        height: 38px;
-
-        font-size: 24px;
-    }
-
-    .slider-btn.prev {
-        left: 10px;
-    }
-
-    .slider-btn.next {
-        right: 10px;
-    }
-
-    .countdown {
-        gap: 6px;
-    }
-
-    .count-box {
-        min-width: 69px;
-
-        padding: 15px 5px;
-    }
-
-    .count-box strong {
-        font-size: 30px;
-    }
-
-    .count-box span {
-        font-size: 6px;
-
-        letter-spacing: 1px;
-    }
-
-    .nikah {
-        padding: 110px 20px;
-    }
-
-    .nikah h2 {
-        font-size: 65px;
-    }
-
-    .nikah-quote {
-        font-size: 18px;
-    }
-
-    .gallery-grid {
-        grid-auto-rows: 145px;
-
-        gap: 8px;
-    }
-
-    .gallery-placeholder {
-        font-size: 13px;
-    }
-
-    .closing {
-        min-height: 75vh;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-}
-/* =====================================================
-   ROYAL ISLAMIC GATE — OPENING COVER
-===================================================== */
-
-.royal-gate {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: min(82vw, 520px);
-    height: min(78vh, 650px);
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    perspective: 1200px;
-}
-
-/* -----------------------------------------------------
-   GATE DOORS
------------------------------------------------------ */
-
-.gate-door {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #061a15 0%,
-            #0d3329 45%,
-            #071f19 100%
-        );
-
-    border: 2px solid var(--gold-dark);
-
-    box-shadow:
-        inset 0 0 35px rgba(215, 181, 109, 0.12),
-        0 0 25px rgba(0, 0, 0, 0.45);
-
-    transition:
-        transform 2s cubic-bezier(.77,0,.18,1),
-        box-shadow 1.5s ease;
-}
-
-.gate-left {
-    left: 0;
-
-    border-right: 1px solid var(--gold);
-
-    transform-origin: left center;
-
-    border-radius: 260px 0 0 0;
-}
-
-.gate-right {
-    right: 0;
-
-    border-left: 1px solid var(--gold);
-
-    transform-origin: right center;
-
-    border-radius: 0 260px 0 0;
-}
-
-
-/* -----------------------------------------------------
-   ISLAMIC ARCH
------------------------------------------------------ */
-
-.gate-arch {
-    position: absolute;
-
-    top: 5%;
-    left: 12%;
-    width: 76%;
-    height: 90%;
-
-    border: 1px solid rgba(215, 181, 109, 0.65);
-
-    border-radius:
-        50% 50% 8px 8px /
-        22% 22% 8px 8px;
-
-    box-shadow:
-        inset 0 0 25px rgba(215, 181, 109, 0.08);
-}
-
-
-/* -----------------------------------------------------
-   INNER GATE PANEL
------------------------------------------------------ */
-
-.gate-panel {
-    position: absolute;
-
-    top: 16%;
-    left: 17%;
-
-    width: 66%;
-    height: 68%;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: space-around;
-
-    border: 1px solid rgba(215, 181, 109, 0.35);
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(215,181,109,.04),
-            transparent
-        );
-
-    box-shadow:
-        inset 0 0 30px rgba(0,0,0,.25);
-}
-
-.gate-pattern {
-    color: var(--gold);
-    font-family: var(--serif);
-
-    font-size: 28px;
-
-    opacity: .7;
-
-    text-shadow:
-        0 0 12px rgba(215,181,109,.35);
-}
-
-
-/* -----------------------------------------------------
-   GOLD BORDER DETAILS
------------------------------------------------------ */
-
-.gate-door::before,
-.gate-door::after {
-    content: "";
-
-    position: absolute;
-
-    left: 8%;
-    right: 8%;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-
-    opacity: .65;
-}
-
-.gate-door::before {
-    top: 10%;
-}
-
-.gate-door::after {
-    bottom: 10%;
-}
-
-
-/* -----------------------------------------------------
-   LOCK
------------------------------------------------------ */
-
-.gate-lock {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 72px;
-    height: 86px;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 30;
-
-    border: 1px solid var(--gold-light);
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #f0d99b,
-            #b9914b 55%,
-            #8c682e
-        );
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.5),
-        0 0 25px rgba(215,181,109,.35);
-
-    cursor: pointer;
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-}
-
-.gate-lock:hover {
-    transform:
-        translate(-50%, -50%)
-        scale(1.08);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.55),
-        0 0 35px rgba(240,217,155,.55);
-}
-
-
-/* Lock shackle */
-
-.lock-shackle {
-    position: absolute;
-
-    top: -27px;
-    left: 16px;
-
-    width: 38px;
-    height: 42px;
-
-    border: 7px solid var(--gold-light);
-
-    border-bottom: 0;
-
-    border-radius: 22px 22px 0 0;
-
-    filter:
-        drop-shadow(
-            0 3px 5px rgba(0,0,0,.35)
-        );
-}
-
-
-/* Lock body */
-
-.lock-body {
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #5c421d;
-
-    font-size: 24px;
-}
-
-
-/* -----------------------------------------------------
-   UNLOCK TEXT
------------------------------------------------------ */
-
-.unlock-text {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 7%;
-
-    transform: translateX(-50%);
-
-    z-index: 35;
-
-    text-align: center;
-
-    white-space: nowrap;
-
-    color: var(--ivory);
-
-    font-family: var(--sans);
-
-    letter-spacing: 3px;
-
-    font-size: 10px;
-
-    line-height: 1.8;
-
-    pointer-events: none;
-}
-
-.unlock-text span,
-.unlock-text strong {
-    display: block;
-}
-
-.unlock-text strong {
-    color: var(--gold-light);
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-    letter-spacing: 4px;
-}
-
-
-/* -----------------------------------------------------
-   GATE ENTRY — CONTENT BEHIND DOORS
------------------------------------------------------ */
-
-.gate-entry {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: min(78vw, 500px);
-    height: min(74vh, 620px);
-
-    transform:
-        translate(-50%, -50%)
-        scale(.94);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    z-index: 4;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        opacity 1.5s ease,
-        transform 2s ease;
-}
-
-.entry-glow {
-    position: absolute;
-
-    inset: 5%;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(240,217,155,.14),
-            transparent 65%
-        );
-
-    filter: blur(15px);
-}
-
-.entry-content {
-    position: relative;
-
-    z-index: 2;
-}
-
-
-/* -----------------------------------------------------
-   PREMIUM NAMES
------------------------------------------------------ */
-
-.entry-content .names h1 {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size:
-        clamp(58px, 13vw, 105px);
-
-    font-weight: 500;
-
-    letter-spacing: 7px;
-
-    line-height: .82;
-
-    color: var(--ivory);
-
-    text-shadow:
-        0 3px 18px rgba(0,0,0,.4);
-}
-
-.entry-content .names .weds {
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(38px, 7vw, 52px);
-
-    color: var(--gold-light);
-
-    margin: 18px 0;
-
-    line-height: 1;
-}
-
-
-/* -----------------------------------------------------
-   GATE HINT
------------------------------------------------------ */
-
-.gate-hint {
-    position: absolute;
-
-    bottom: 5%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 40;
-
-    color: rgba(248,242,229,.65);
-
-    font-family: var(--sans);
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    white-space: nowrap;
-
-    animation:
-        gateHintPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes gateHintPulse {
-
-    0%,
-    100% {
-        opacity: .45;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-}
-
-
-/* -----------------------------------------------------
-   UNLOCKED STATE
------------------------------------------------------ */
-
-.cover.gate-unlocked .gate-left {
-    transform:
-        rotateY(-92deg)
-        translateX(-5%);
-
-    box-shadow:
-        inset 0 0 40px rgba(215,181,109,.08);
-}
-
-.cover.gate-unlocked .gate-right {
-    transform:
-        rotateY(92deg)
-        translateX(5%);
-
-    box-shadow:
-        inset 0 0 40px rgba(215,181,109,.08);
-}
-
-.cover.gate-unlocked .gate-lock {
-    transform:
-        translate(-50%, -50%)
-        scale(.85)
-        rotate(12deg);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        transform .7s ease,
-        opacity .5s ease;
-}
-
-.cover.gate-unlocked .unlock-text,
-.cover.gate-unlocked .gate-hint {
-    opacity: 0;
-    transition: opacity .5s ease;
-}
-
-.cover.gate-unlocked .gate-entry {
-    opacity: 1;
-
-    transform:
-        translate(-50%, -50%)
-        scale(1);
-}
-
-
-/* -----------------------------------------------------
    MOBILE
------------------------------------------------------ */
+========================================================= */
 
 @media (max-width: 600px) {
-
-    .royal-gate {
-        width: 88vw;
-        height: 72vh;
-    }
-
-    .gate-lock {
-        width: 62px;
-        height: 76px;
-    }
-
-    .lock-shackle {
-        left: 14px;
-        width: 34px;
-        height: 38px;
-    }
-
-    .gate-pattern {
-        font-size: 22px;
-    }
-
-    .unlock-text {
-        bottom: 8%;
-    }
-
-    .gate-hint {
-        bottom: 4%;
-        font-size: 8px;
-        letter-spacing: 3px;
-    }
-
-}
-/* =========================================================
-   ASMA WEDS FAIZAN — ROYAL WEDDING GATE
-   ========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap');
-
-
-/* ---------- MAIN GATE ---------- */
-
-.royal-gate {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    z-index: 999999;
-    overflow: hidden;
-    background:
-        radial-gradient(
-            circle at 50% 42%,
-            rgba(54, 76, 55, 0.45),
-            transparent 32%
-        ),
-        linear-gradient(
-            115deg,
-            #020806 0%,
-            #071914 40%,
-            #020806 100%
-        );
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
-
-
-/* ---------- BACKGROUND ---------- */
-
-.gate-background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            ellipse at center 30%,
-            rgba(190, 151, 69, 0.13),
-            transparent 38%
-        ),
-        linear-gradient(
-            90deg,
-            #010504,
-            #071a15 35%,
-            #0b241d 50%,
-            #071a15 65%,
-            #010504
-        );
-}
-
-
-/* subtle royal texture */
-
-.gate-background::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    opacity: 0.16;
-
-    background-image:
-        repeating-linear-gradient(
-            45deg,
-            transparent 0,
-            transparent 5px,
-            rgba(215,181,109,0.12) 6px,
-            transparent 7px
-        );
-
-    pointer-events: none;
-}
-
-
-/* ---------- LIGHTS ---------- */
-
-.gate-light {
-    position: absolute;
-    width: 280px;
-    height: 500px;
-
-    top: 10%;
-
-    filter: blur(60px);
-
-    background: rgba(215,181,109,0.10);
-
-    pointer-events: none;
-}
-
-.light-left {
-    left: -100px;
-}
-
-.light-right {
-    right: -100px;
-}
-
-
-/* ---------- ROYAL PILLARS ---------- */
-
-.royal-pillar {
-    position: absolute;
-
-    top: 0;
-    bottom: 0;
-
-    width: clamp(55px, 11vw, 150px);
-
-    background:
-        linear-gradient(
-            90deg,
-            #11110d,
-            #4a3a1e 25%,
-            #c39a4b 48%,
-            #4c3b20 70%,
-            #0b0d0b
-        );
-
-    border-left: 2px solid rgba(215,181,109,0.7);
-    border-right: 2px solid rgba(215,181,109,0.7);
-
-    box-shadow:
-        inset 0 0 25px rgba(0,0,0,0.8),
-        0 0 35px rgba(0,0,0,0.7);
-}
-
-.pillar-left {
-    left: 0;
-}
-
-.pillar-right {
-    right: 0;
-}
-
-
-/* pillar top */
-
-.pillar-cap {
-    position: absolute;
-
-    top: 4%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 80%;
-    height: 80px;
-
-    border-radius: 50% 50% 10px 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #5d4724,
-            #d9b96c,
-            #654d27
-        );
-
-    box-shadow:
-        0 0 20px rgba(215,181,109,0.25);
-}
-
-
-/* decorative pillar pattern */
-
-.pillar-pattern {
-    position: absolute;
-
-    top: 20%;
-    left: 20%;
-    right: 20%;
-    bottom: 10%;
-
-    border: 1px solid rgba(230,201,128,0.45);
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 8px,
-            rgba(215,181,109,0.15) 9px,
-            transparent 10px
-        );
-}
-
-
-/* ---------- MAIN GATE AREA ---------- */
-
-.main-gate {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -48%);
-
-    width: min(78vw, 1100px);
-    height: min(78vh, 850px);
-
-    display: flex;
-
-    perspective: 1800px;
-
-    filter:
-        drop-shadow(0 30px 35px rgba(0,0,0,0.75));
-}
-
-
-/* ---------- DOORS ---------- */
-
-.gate-door {
-    position: relative;
-
-    width: 50%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(44,76,58,0.7),
-            transparent 50%
-        ),
-        linear-gradient(
-            135deg,
-            #06140f,
-            #0c2a20 50%,
-            #03100c
-        );
-
-    border: 3px solid #b9934c;
-
-    box-shadow:
-        inset 0 0 50px rgba(0,0,0,0.8),
-        inset 0 0 12px rgba(215,181,109,0.35);
-
-    transition:
-        transform 1.9s cubic-bezier(.77,0,.18,1);
-}
-
-
-/* left door */
-
-.gate-left {
-    transform-origin: left center;
-
-    border-right: 1px solid rgba(215,181,109,0.8);
-}
-
-
-/* right door */
-
-.gate-right {
-    transform-origin: right center;
-
-    border-left: 1px solid rgba(215,181,109,0.8);
-}
-
-
-/* ---------- ISLAMIC DOOR PATTERN ---------- */
-
-.gate-door::before {
-    content: "";
-
-    position: absolute;
-    inset: 25px;
-
-    border: 2px solid rgba(215,181,109,0.55);
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            transparent 0,
-            transparent 13px,
-            rgba(215,181,109,0.08) 14px,
-            transparent 15px
-        );
-
-    box-shadow:
-        inset 0 0 30px rgba(0,0,0,0.7);
-}
-
-
-/* ---------- ARCH ---------- */
-
-.gate-arch {
-    position: absolute;
-
-    left: 18%;
-    right: 18%;
-    top: 9%;
-
-    height: 36%;
-
-    border: 3px solid #c7a45a;
-
-    border-bottom: none;
-
-    border-radius:
-        50% 50% 0 0;
-
-    box-shadow:
-        inset 0 0 20px rgba(215,181,109,0.15);
-}
-
-
-/* ---------- GOLD PANELS ---------- */
-
-.gate-panel {
-    position: absolute;
-
-    left: 10%;
-    right: 10%;
-
-    border: 1px solid rgba(215,181,109,0.65);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(215,181,109,0.08),
-            rgba(0,0,0,0.18)
-        );
-
-    box-shadow:
-        inset 0 0 18px rgba(0,0,0,0.6);
-}
-
-.panel-top {
-    top: 10%;
-    height: 30%;
-}
-
-.panel-middle {
-    top: 43%;
-    height: 22%;
-}
-
-.panel-bottom {
-    bottom: 6%;
-    height: 25%;
-}
-
-
-/* ---------- GOLD DECORATIONS ---------- */
-
-.gate-decoration {
-    position: absolute;
-
-    width: 45px;
-    height: 45px;
-
-    border: 2px solid #d7b56d;
-
-    transform: rotate(45deg);
-
-    box-shadow:
-        0 0 10px rgba(215,181,109,0.15);
-}
-
-.decoration-1 {
-    top: 13%;
-    left: 8%;
-}
-
-.decoration-2 {
-    top: 13%;
-    right: 8%;
-}
-
-.decoration-3 {
-    bottom: 10%;
-    left: 50%;
-
-    transform:
-        translateX(-50%)
-        rotate(45deg);
-}
-
-
-/* ---------- VERTICAL GOLD LINE ---------- */
-
-.gold-line {
-    position: absolute;
-
-    top: 5%;
-    bottom: 5%;
-
-    width: 2px;
-
-    background:
-        linear-gradient(
-            transparent,
-            #d7b56d 20%,
-            #f0d994 50%,
-            #d7b56d 80%,
-            transparent
-        );
-
-    opacity: 0.75;
-}
-
-.gate-left .vertical-line {
-    right: 4%;
-}
-
-.gate-right .vertical-line {
-    left: 4%;
-}
-
-
-/* =========================================================
-   ROYAL CENTER SEAL
-   ========================================================= */
-
-.royal-seal {
-    position: absolute;
-
-    z-index: 50;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: clamp(220px, 29vw, 360px);
-    aspect-ratio: 1 / 1;
-
-    border: none;
-
-    padding: 0;
-
-    cursor: pointer;
-
-    background: transparent;
-
-    filter:
-        drop-shadow(0 12px 25px rgba(0,0,0,0.8));
-
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-}
-
-
-/* outer gold ring */
-
-.seal-outer {
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 50%;
-
-    padding: 10px;
-
-    background:
-        conic-gradient(
-            from 0deg,
-            #76531d,
-            #f0d994,
-            #9d732d,
-            #f6df9c,
-            #73501d,
-            #d7b56d,
-            #76531d
-        );
-
-    box-shadow:
-        0 0 0 4px #1b1408,
-        0 0 0 7px #b58b40,
-        0 0 40px rgba(215,181,109,0.35);
-}
-
-
-/* middle ring */
-
-.seal-middle {
-    width: 100%;
-    height: 100%;
-
-    padding: 10px;
-
-    border-radius: 50%;
-
-    background:
-        #071812;
-
-    border: 2px solid #e1c47a;
-
-    box-shadow:
-        inset 0 0 35px rgba(0,0,0,0.8);
-}
-
-
-/* inner seal */
-
-.seal-inner {
-    width: 100%;
-    height: 100%;
-
-    border-radius: 50%;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    border: 1px solid rgba(215,181,109,0.65);
-
-    background:
-        radial-gradient(
-            circle,
-            #173329,
-            #06120e 70%
-        );
-
-    position: relative;
-}
-
-
-/* subtle ornament */
-
-.seal-inner::before {
-    content: "✦";
-
-    position: absolute;
-
-    top: 13%;
-
-    color: #d7b56d;
-
-    font-size: 20px;
-
-    opacity: 0.8;
-}
-
-
-/* small text */
-
-.seal-small {
-    font-family: 'Montserrat', sans-serif;
-
-    font-size: clamp(7px, 0.7vw, 10px);
-
-    letter-spacing: 3px;
-
-    color: #d7b56d;
-
-    margin-bottom: 7px;
-}
-
-
-/* bride */
-
-.bride-name,
-.groom-name {
-    font-family: 'Great Vibes', cursive;
-
-    font-size: clamp(38px, 5vw, 68px);
-
-    line-height: 0.9;
-
-    color: #f1d58e;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,0.8),
-        0 0 15px rgba(215,181,109,0.15);
-}
-
-
-/* Weds */
-
-.weds {
-    font-family: 'Cormorant Garamond', serif;
-
-    font-size: clamp(17px, 2vw, 25px);
-
-    font-style: italic;
-
-    color: #eee0b9;
-
-    margin: 8px 0;
-}
-
-
-/* divider */
-
-.seal-divider {
-    width: 70px;
-    height: 1px;
-
-    margin: 13px 0 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #d7b56d,
-            transparent
-        );
-}
-
-
-/* click */
-
-.click-enter {
-    font-family: 'Montserrat', sans-serif;
-
-    font-size: clamp(8px, 0.75vw, 11px);
-
-    letter-spacing: 3px;
-
-    color: #f0d994;
-
-    transition:
-        letter-spacing 0.4s ease,
-        color 0.4s ease;
-}
-
-
-/* seal hover */
-
-.royal-seal:hover {
-    transform:
-        translate(-50%, -50%)
-        scale(1.035);
-
-    filter:
-        drop-shadow(0 15px 30px rgba(0,0,0,0.9))
-        drop-shadow(0 0 25px rgba(215,181,109,0.25));
-}
-
-.royal-seal:hover .click-enter {
-    letter-spacing: 4px;
-    color: #fff1bd;
-}
-
-
-/* =========================================================
-   BOTTOM ORNAMENT
-   ========================================================= */
-
-.gate-bottom {
-    position: absolute;
-
-    left: 50%;
+  .royal-gate {
+    width: 100vw;
+    height: 88svh;
+  }
+
+  .royal-pillar {
+    width: 22px;
+  }
+
+  .main-gate {
+    width: 92vw;
+    height: 74svh;
+  }
+
+  .gate-door {
+    border-width: 2px;
+  }
+
+  .gate-door::before {
+    inset: 12px;
+  }
+
+  .gate-decoration {
+    width: 22px;
+    height: 22px;
+  }
+
+  .gate-arch {
+    left: 13%;
+    right: 13%;
+  }
+
+  .royal-seal {
+    width: min(70vw, 285px);
+  }
+
+  .seal-outer {
+    padding: 7px;
+  }
+
+  .seal-middle {
+    padding: 7px;
+  }
+
+  .gate-bottom {
+    width: 68vw;
     bottom: 4%;
+  }
 
-    transform: translateX(-50%);
+  .entry-bismillah {
+    font-size: 19px;
+  }
 
-    width: min(45vw, 500px);
+  .entry-small {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
 
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  .entry-name {
+    font-size: 58px;
+    letter-spacing: 3px;
+  }
 
-    color: #d7b56d;
-}
+  .entry-weds {
+    font-size: 37px;
+    margin: 13px 0;
+  }
 
-.gate-bottom span {
-    flex: 1;
+  .entry-date {
+    font-size: 17px;
+    letter-spacing: 3px;
+  }
 
-    height: 1px;
+  .hero {
+    min-height: 90vh;
+  }
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(215,181,109,0.7)
-        );
-}
+  .hero h2 {
+    font-size: 55px;
+  }
 
-.gate-bottom span:last-child {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(215,181,109,0.7),
-            transparent
-        );
-}
+  .hero h2 span {
+    font-size: 40px;
+  }
 
-.bottom-ornament {
+  .message,
+  .events,
+  .countdown-section,
+  .venue,
+  .gallery,
+  .rsvp {
+    padding: 90px 0;
+  }
+
+  .message h2,
+  .slideshow-section h2,
+  .events h2,
+  .countdown-section h2,
+  .venue h2,
+  .gallery h2,
+  .rsvp h2 {
+    font-size: 43px;
+  }
+
+  .message-text {
     font-size: 18px;
+    padding: 0 10px;
+  }
+
+  .slider {
+    height: 330px;
+    margin-top: 35px;
+  }
+
+  .slide-placeholder {
+    font-size: 19px;
+    letter-spacing: 3px;
+  }
+
+  .slider-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+  }
+
+  .slider-btn.prev { left: 10px; }
+  .slider-btn.next { right: 10px; }
+
+  .countdown {
+    gap: 6px;
+  }
+
+  .count-box {
+    min-width: 69px;
+    padding: 15px 5px;
+  }
+
+  .count-box strong {
+    font-size: 30px;
+  }
+
+  .count-box span {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+
+  .nikah {
+    padding: 110px 20px;
+  }
+
+  .nikah h2 {
+    font-size: 65px;
+  }
+
+  .nikah-quote {
+    font-size: 18px;
+  }
+
+  .gallery-grid {
+    grid-auto-rows: 145px;
+    gap: 8px;
+  }
+
+  .gallery-placeholder {
+    font-size: 13px;
+  }
+
+  .closing {
+    min-height: 75vh;
+  }
 }
-
-
-/* =========================================================
-   OPENING ANIMATION
-   ========================================================= */
-
-.royal-gate.opening .gate-left {
-    transform:
-        rotateY(-92deg)
-        translateX(-5%);
-}
-
-.royal-gate.opening .gate-right {
-    transform:
-        rotateY(92deg)
-        translateX(5%);
-}
-
-
-/* seal disappears */
-
-.royal-gate.opening .royal-seal {
-    transform:
-        translate(-50%, -50%)
-        scale(1.35);
-
-    opacity: 0;
-
-    transition:
-        transform 0.8s ease,
-        opacity 0.5s ease;
-}
-
-
-/* gate fade */
-
-.royal-gate.opened {
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .main-gate {
-        width: 92vw;
-        height: 76vh;
-    }
-
-    .royal-pillar {
-        width: 30px;
-    }
-
-    .gate-door {
-        border-width: 2px;
-    }
-
-    .gate-door::before {
-        inset: 12px;
-    }
-
-    .gate-decoration {
-        width: 22px;
-        height: 22px;
-    }
-
-    .gate-arch {
-        left: 13%;
-        right: 13%;
-    }
-
-    .royal-seal {
-        width: min(65vw, 285px);
-    }
-
-    .seal-outer {
-        padding: 7px;
-    }
-
-    .seal-middle {
-        padding: 7px;
-    }
-
-    .gate-bottom {
-        width: 65vw;
-        bottom: 3%;
-    }
-
-    .bottom-ornament {
-        font-size: 14px;
-    }
-}
-
-
-/* very small phones */
 
 @media (max-width: 380px) {
+  .main-gate {
+    height: 70svh;
+  }
 
-    .main-gate {
-        height: 72vh;
-    }
+  .royal-seal {
+    width: 235px;
+  }
 
-    .royal-seal {
-        width: 235px;
-    }
+  .bride-name,
+  .groom-name {
+    font-size: 40px;
+  }
 
-    .bride-name,
-    .groom-name {
-        font-size: 40px;
-    }
-
-    .seal-small {
-        font-size: 7px;
-        letter-spacing: 2px;
-    }
+  .seal-small {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
 }
-/* Lock wedding page behind the gate */
 
-body.wedding-locked {
-    overflow: hidden;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
