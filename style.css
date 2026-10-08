@@ -2827,3 +2827,8 @@ body {
         letter-spacing: 2px;
     }
 }
+/* Lock wedding page behind the gate */
+
+body.wedding-locked {
+    overflow: hidden;
+}
