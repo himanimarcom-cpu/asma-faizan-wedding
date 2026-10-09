@@ -1459,3 +1459,98 @@ body:not(.wedding-locked) {
 #royalGate.opened {
   pointer-events: none;
 }
+
+/* =====================================================
+   ASMA WEDS FAIZAN — FINAL BACKGROUND + SCROLL FIX
+===================================================== */
+
+/* PAGE SCROLL */
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body.wedding-locked {
+  overflow: hidden;
+}
+
+/* INVITATION BACKGROUND */
+#invitation {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+
+  background-color: #071f19;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(7, 31, 25, 0.78) 0%,
+      rgba(7, 31, 25, 0.65) 45%,
+      rgba(7, 31, 25, 0.82) 100%
+    ),
+    url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1800&q=85");
+
+  background-position: center, center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* SOFT GOLDEN LIGHT */
+#invitation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 12%,
+      rgba(215, 181, 109, 0.24),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse at 10% 55%,
+      rgba(215, 181, 109, 0.10),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 90% 80%,
+      rgba(215, 181, 109, 0.10),
+      transparent 42%
+    );
+}
+
+/* INVITATION CONTENT */
+#invitation.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+}
+
+/* KEEP SECTIONS TRANSPARENT */
+#invitation section {
+  background-color: transparent;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  #invitation {
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+  }
+}
