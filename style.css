@@ -1413,3 +1413,49 @@ body.invitation-open .opening-hero-content {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* FIX: PAGE SCROLL AFTER OPENING THE GATE */
+
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.wedding-locked {
+  overflow: hidden;
+}
+
+body:not(.wedding-locked) {
+  overflow-y: auto !important;
+}
+
+#invitation {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+}
+
+#invitation.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+}
+
+#cover {
+  transition: opacity 0.5s ease;
+}
+
+#royalGate.opened {
+  pointer-events: none;
+}
