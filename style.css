@@ -1531,6 +1531,12 @@ body.wedding-locked {
       transparent 42%
     );
 }
+background-image:
+  linear-gradient(
+    rgba(4, 22, 16, 0.48),
+    rgba(4, 22, 16, 0.68)
+  ),
+  url("images/islamic-mosque.png");
 
 /* INVITATION CONTENT */
 #invitation.show {
