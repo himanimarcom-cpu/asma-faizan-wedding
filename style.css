@@ -1450,3 +1450,423 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Noto+Naskh+Arabic:wght@500;600&display=swap');
+
+:root {
+  --wedding-green: #071f19;
+  --wedding-green-light: #10392c;
+  --wedding-gold: #d7b56d;
+  --wedding-ivory: #f8f2e5;
+}
+
+/* MAIN HERO: sits behind the gate until it opens */
+.wedding-hero {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 20px;
+  color: var(--wedding-ivory);
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 45%,
+      rgba(37, 81, 57, .55), transparent 65%),
+    linear-gradient(145deg, #0d3024 0%, #071711 55%, #102d21 100%);
+}
+
+/* Subtle blended Islamic geometric background */
+.islamic-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .13;
+  background-image:
+    repeating-linear-gradient(45deg,
+      transparent 0 27px,
+      rgba(215,181,109,.35) 28px,
+      transparent 29px 54px),
+    repeating-linear-gradient(-45deg,
+      transparent 0 27px,
+      rgba(215,181,109,.25) 28px,
+      transparent 29px 54px);
+  -webkit-mask-image: radial-gradient(ellipse, black, transparent 85%);
+  mask-image: radial-gradient(ellipse, black, transparent 85%);
+}
+
+.wedding-hero::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(215,181,109,.48);
+  outline: 1px solid rgba(215,181,109,.12);
+  outline-offset: 5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.golden-light {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(215,181,109,.12);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+  animation: goldenPulse 6s ease-in-out infinite alternate;
+}
+
+.light-one {
+  top: 0;
+  left: -120px;
+}
+
+.light-two {
+  right: -120px;
+  bottom: 0;
+  animation-delay: -3s;
+}
+
+@keyframes goldenPulse {
+  from { opacity: .4; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(65px);
+  transition:
+    opacity 1.1s ease .35s,
+    transform 1.2s cubic-bezier(.2,.75,.25,1) .25s;
+}
+
+.bismillah {
+  color: var(--wedding-gold);
+  font-family: "Noto Naskh Arabic", serif;
+  font-size: clamp(30px, 5vw, 49px);
+  line-height: 1.9;
+  margin-bottom: 15px;
+  text-shadow: 0 0 25px rgba(215,181,109,.24);
+}
+
+.invocation {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(9px, 1.8vw, 12px);
+  letter-spacing: 3px;
+  line-height: 2.1;
+  color: #e6d2a4;
+  margin: 0 0 25px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+  color: var(--wedding-gold);
+}
+
+.hero-divider i {
+  width: clamp(35px, 10vw, 90px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--wedding-gold));
+}
+
+.hero-divider i:nth-of-type(2) {
+  transform: rotate(180deg);
+}
+
+.wedding-intro {
+  color: #e6d2a4;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 3vw, 22px);
+  font-style: italic;
+  margin: 26px 0 8px;
+}
+
+.couple-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(68px, 12vw, 112px);
+  font-weight: 400;
+  color: var(--wedding-gold);
+  text-shadow:
+    0 2px 1px rgba(0,0,0,.4),
+    0 0 30px rgba(215,181,109,.16);
+}
+
+.weds {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(25px, 4vw, 36px);
+  font-style: italic;
+  color: var(--wedding-ivory);
+  margin: 8px 0 12px;
+}
+
+.hero-date {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--wedding-gold);
+  margin: 30px 0 10px;
+}
+
+.hero-venue {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 3vw, 22px);
+  color: #f8f2e5;
+  margin: 10px 0;
+}
+
+.hero-bottom-ornament {
+  font-size: 27px;
+  color: var(--wedding-gold);
+  margin-top: 22px;
+}
+
+/* FULL-SCREEN GATE */
+.wedding-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #06150f;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.gate-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background-color: #09251a;
+  background-image:
+    repeating-linear-gradient(90deg,
+      transparent 0 38px,
+      rgba(215,181,109,.07) 39px,
+      transparent 41px 76px),
+    repeating-linear-gradient(0deg,
+      transparent 0 38px,
+      rgba(215,181,109,.08) 39px,
+      transparent 41px 76px),
+    linear-gradient(135deg, #17402e, #06170f 65%, #153927);
+  border: 2px solid #b18b48;
+  box-shadow: inset 0 0 45px rgba(0,0,0,.75);
+  transition: transform 1.65s cubic-bezier(.77,0,.18,1);
+}
+
+.gate-left {
+  left: 0;
+  border-right: 2px solid var(--wedding-gold);
+}
+
+.gate-right {
+  right: 0;
+  border-left: 2px solid var(--wedding-gold);
+}
+
+.gate-door::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(215,181,109,.55);
+  box-shadow:
+    inset 0 0 20px rgba(215,181,109,.08),
+    0 0 12px rgba(215,181,109,.08);
+}
+
+.gate-door::after {
+  content: "✧  ❦  ✧";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(215,181,109,.35);
+  font-size: clamp(32px, 5vw, 65px);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.gate-seal {
+  position: relative;
+  z-index: 5;
+  width: clamp(175px, 48vw, 235px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--wedding-gold);
+  background:
+    radial-gradient(circle, #173a29 0%, #092016 67%, #06150f 100%);
+  border: 2px solid #e5c783;
+  box-shadow:
+    0 0 0 7px rgba(215,181,109,.13),
+    0 0 0 10px rgba(215,181,109,.4),
+    0 0 40px rgba(215,181,109,.32),
+    inset 0 0 25px rgba(215,181,109,.15);
+  animation: sealGlow 2.5s ease-in-out infinite alternate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gate-seal::before,
+.gate-seal::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(215,181,109,.7);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gate-seal::after {
+  inset: 16px;
+  border-style: dashed;
+  opacity: .5;
+}
+
+.gate-seal:focus-visible {
+  outline: 3px solid #fff0c4;
+  outline-offset: 15px;
+}
+
+.seal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.seal-ornament {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.seal-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 5vw, 29px);
+  letter-spacing: 4px;
+}
+
+.seal-line {
+  width: 55px;
+  height: 1px;
+  background: var(--wedding-gold);
+}
+
+.seal-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  white-space: nowrap;
+}
+
+@keyframes sealGlow {
+  from {
+    box-shadow:
+      0 0 0 7px rgba(215,181,109,.1),
+      0 0 0 10px rgba(215,181,109,.3),
+      0 0 25px rgba(215,181,109,.2),
+      inset 0 0 25px rgba(215,181,109,.1);
+  }
+  to {
+    box-shadow:
+      0 0 0 7px rgba(215,181,109,.17),
+      0 0 0 10px rgba(215,181,109,.55),
+      0 0 55px rgba(215,181,109,.45),
+      inset 0 0 35px rgba(215,181,109,.22);
+  }
+}
+
+/* Gate opens; the hero rises into view */
+body.invitation-open .gate-left {
+  transform: translateX(-102%);
+}
+
+body.invitation-open .gate-right {
+  transform: translateX(102%);
+}
+
+body.invitation-open .gate-seal {
+  opacity: 0;
+  transform: scale(.65);
+  pointer-events: none;
+  transition: opacity .4s ease, transform .5s ease;
+}
+
+body.invitation-open .hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.invitation-open .wedding-gate {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-delay: 1.65s;
+}
+
+@media (max-width: 600px) {
+  .wedding-hero {
+    padding: 55px 24px;
+  }
+
+  .wedding-hero::before {
+    inset: 12px;
+  }
+
+  .bismillah {
+    margin-bottom: 10px;
+  }
+
+  .invocation {
+    letter-spacing: 2px;
+  }
+
+  .hero-date {
+    letter-spacing: 2.5px;
+  }
+
+  .gate-door::before {
+    inset: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .golden-light,
+  .gate-seal {
+    animation: none;
+  }
+
+  .gate-door,
+  .wedding-gate,
+  .hero-content {
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
