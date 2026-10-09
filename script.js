@@ -1,8 +1,14 @@
+
 /* =========================================================
-   ASMA & FAIZAN — CLEAN MASTER JAVASCRIPT
+   ASMA & FAIZAN — MASTER JAVASCRIPT
+   Premium Muslim Wedding Invitation
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  /* =======================================================
+     ELEMENTS
+  ======================================================= */
 
   const loader = document.getElementById("loader");
   const cover = document.getElementById("cover");
@@ -10,6 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const enterWedding = document.getElementById("enterWedding");
   const invitation = document.getElementById("invitation");
   const musicButton = document.getElementById("musicButton");
+
+
+  /* =======================================================
+     INITIAL LOCK
+  ======================================================= */
 
   document.body.classList.add("wedding-locked");
 
@@ -19,32 +30,33 @@ document.addEventListener("DOMContentLoaded", function () {
   ======================================================= */
 
   window.setTimeout(function () {
+
     if (loader) {
       loader.classList.add("hide");
     }
+
   }, 900);
 
 
   /* =======================================================
-     ROYAL GATE OPEN
+     ROYAL GATE OPENING ANIMATION
   ======================================================= */
 
-  if (enterWedding && royalGate && cover && invitation) {
+  if (enterWedding && royalGate && invitation) {
 
     enterWedding.addEventListener("click", function () {
 
-      if (royalGate.classList.contains("opening")) return;
+      // Prevent multiple clicks while the gate is opening
+      if (royalGate.classList.contains("opening")) {
+        return;
+      }
 
       enterWedding.disabled = true;
 
       royalGate.classList.add("opening");
 
 
-      /*
-        Gate opening animation ke baad
-        main invitation show hoga.
-      */
-
+      // Reveal the invitation after the gate animation
       window.setTimeout(function () {
 
         royalGate.classList.add("opened");
@@ -54,15 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.remove("wedding-locked");
 
 
+        // Show the music button
         if (musicButton) {
           musicButton.classList.add("show");
         }
 
 
+        // Start at the top of the invitation
         window.scrollTo({
           top: 0,
           behavior: "smooth"
         });
+
 
       }, 2100);
 
@@ -76,32 +91,23 @@ document.addEventListener("DOMContentLoaded", function () {
      14 DECEMBER 2026 — 7:00 PM IST
   ======================================================= */
 
-  const weddingDate =
-    new Date("2026-12-14T19:00:00+05:30").getTime();
+  const weddingDate = new Date(
+    "2026-12-14T19:00:00+05:30"
+  ).getTime();
 
 
   function updateCountdown() {
-
-    const now = Date.now();
-
-    const distance = weddingDate - now;
-
 
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
     const minutesEl = document.getElementById("minutes");
     const secondsEl = document.getElementById("seconds");
 
-
-    if (
-      !daysEl ||
-      !hoursEl ||
-      !minutesEl ||
-      !secondsEl
-    ) {
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
       return;
     }
 
+    const distance = weddingDate - Date.now();
 
     if (distance <= 0) {
 
@@ -113,62 +119,40 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    const days = Math.floor(
+      distance / (1000 * 60 * 60 * 24)
+    );
 
-    const days =
-      Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-      );
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
 
+    const minutes = Math.floor(
+      (distance % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
 
-    const hours =
-      Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-      );
-
-
-    const minutes =
-      Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-      );
+    const seconds = Math.floor(
+      (distance % (1000 * 60)) / 1000
+    );
 
 
-    const seconds =
-      Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-      );
-
-
-    daysEl.textContent =
-      String(days).padStart(2, "0");
-
-
-    hoursEl.textContent =
-      String(hours).padStart(2, "0");
-
-
-    minutesEl.textContent =
-      String(minutes).padStart(2, "0");
-
-
-    secondsEl.textContent =
-      String(seconds).padStart(2, "0");
+    daysEl.textContent = String(days).padStart(2, "0");
+    hoursEl.textContent = String(hours).padStart(2, "0");
+    minutesEl.textContent = String(minutes).padStart(2, "0");
+    secondsEl.textContent = String(seconds).padStart(2, "0");
 
   }
 
 
   updateCountdown();
 
-  window.setInterval(
-    updateCountdown,
-    1000
-  );
+  window.setInterval(updateCountdown, 1000);
 
 
   /* =======================================================
-     SLIDER
+     PHOTO SLIDER
   ======================================================= */
 
   let slideIndex = 1;
@@ -176,20 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSlide(number) {
 
-    const slides =
-      document.querySelectorAll(".slide");
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
 
-    const dots =
-      document.querySelectorAll(".dot");
-
-
-    if (!slides.length) return;
-
+    if (!slides.length) {
+      return;
+    }
 
     if (number > slides.length) {
       slideIndex = 1;
     }
-
 
     if (number < 1) {
       slideIndex = slides.length;
@@ -197,33 +177,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     slides.forEach(function (slide) {
-
       slide.classList.remove("active");
-
     });
-
 
     dots.forEach(function (dot) {
-
       dot.classList.remove("active-dot");
-
     });
 
 
-    slides[slideIndex - 1]
-      .classList.add("active");
-
+    slides[slideIndex - 1].classList.add("active");
 
     if (dots[slideIndex - 1]) {
-
-      dots[slideIndex - 1]
-        .classList.add("active-dot");
-
+      dots[slideIndex - 1].classList.add("active-dot");
     }
 
   }
 
 
+  // Previous and next buttons
   window.changeSlide = function (step) {
 
     slideIndex += step;
@@ -233,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
 
+  // Slider navigation dots
   window.currentSlide = function (number) {
 
     slideIndex = number;
@@ -246,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =======================================================
-     AUTO SLIDER
+     AUTOMATIC SLIDER
   ======================================================= */
 
   window.setInterval(function () {
@@ -271,15 +243,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (musicButton) {
 
-    musicButton.addEventListener(
-      "click",
-      function () {
+    musicButton.addEventListener("click", function () {
 
-        musicButton.classList.toggle("playing");
+      musicButton.classList.toggle("playing");
 
-      }
-    );
+    });
 
   }
+
+
+  /* =======================================================
+     END
+  ======================================================= */
 
 });
