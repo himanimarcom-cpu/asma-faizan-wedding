@@ -38,53 +38,58 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 900);
 
 
-  /* =======================================================
-     ROYAL GATE OPENING ANIMATION
-  ======================================================= */
+ 
+/* =======================================================
+   ROYAL GATE OPEN + RESTORE PAGE SCROLL
+======================================================= */
 
-  if (enterWedding && royalGate && invitation) {
+if (enterWedding && royalGate && invitation) {
 
-    enterWedding.addEventListener("click", function () {
+  enterWedding.addEventListener("click", function () {
 
-      // Prevent multiple clicks while the gate is opening
-      if (royalGate.classList.contains("opening")) {
-        return;
+    if (royalGate.classList.contains("opening")) return;
+
+    enterWedding.disabled = true;
+    royalGate.classList.add("opening");
+
+    window.setTimeout(function () {
+
+      royalGate.classList.add("opened");
+      invitation.classList.add("show");
+
+      // Remove the scroll lock
+      document.body.classList.remove("wedding-locked");
+      document.documentElement.classList.remove("wedding-locked");
+
+      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
+      document.documentElement.style.overflow = "auto";
+      document.documentElement.style.overflowY = "auto";
+
+      // Hide the cover after the gate animation
+      if (cover) {
+        cover.style.opacity = "0";
+        cover.style.pointerEvents = "none";
+
+        window.setTimeout(function () {
+          cover.style.visibility = "hidden";
+        }, 500);
       }
 
-      enterWedding.disabled = true;
+      if (musicButton) {
+        musicButton.classList.add("show");
+      }
 
-      royalGate.classList.add("opening");
+      window.scrollTo({
+        top: 0,
+        behavior: "auto"
+      });
 
+    }, 2100);
 
-      // Reveal the invitation after the gate animation
-      window.setTimeout(function () {
+  });
 
-        royalGate.classList.add("opened");
-
-        invitation.classList.add("show");
-
-        document.body.classList.remove("wedding-locked");
-
-
-        // Show the music button
-        if (musicButton) {
-          musicButton.classList.add("show");
-        }
-
-
-        // Start at the top of the invitation
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-
-      }, 2100);
-
-    });
-
-  }
-
+}
 
   /* =======================================================
      COUNTDOWN
