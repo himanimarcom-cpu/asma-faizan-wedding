@@ -1460,11 +1460,11 @@ body:not(.wedding-locked) {
   pointer-events: none;
 }
 
+
 /* =====================================================
-   ASMA WEDS FAIZAN — FINAL BACKGROUND + SCROLL FIX
+   RESPONSIVE ISLAMIC GREEN-GOLD BACKGROUND
 ===================================================== */
 
-/* PAGE SCROLL */
 html {
   min-height: 100%;
   overflow-x: hidden;
@@ -1480,7 +1480,11 @@ body.wedding-locked {
   overflow: hidden;
 }
 
-/* INVITATION BACKGROUND */
+body:not(.wedding-locked) {
+  overflow-y: auto !important;
+}
+
+/* MAIN INVITATION BACKGROUND */
 #invitation {
   position: relative;
   isolation: isolate;
@@ -1490,23 +1494,41 @@ body.wedding-locked {
   overflow: visible;
 
   background-color: #071f19;
-
   background-image:
+    radial-gradient(
+      ellipse at 15% 8%,
+      rgba(215, 181, 109, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 90% 45%,
+      rgba(25, 73, 54, 0.55),
+      transparent 42%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 34px,
+      rgba(215, 181, 109, 0.045) 35px,
+      transparent 36px 68px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 34px,
+      rgba(215, 181, 109, 0.035) 35px,
+      transparent 36px 68px
+    ),
     linear-gradient(
       180deg,
-      rgba(7, 31, 25, 0.78) 0%,
-      rgba(7, 31, 25, 0.65) 45%,
-      rgba(7, 31, 25, 0.82) 100%
-    ),
-    url("https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1800&q=85");
+      #0b3023 0%,
+      #061b14 50%,
+      #0b2b20 100%
+    );
 
-  background-position: center, center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-repeat: repeat;
+  background-attachment: scroll;
 }
 
-/* SOFT GOLDEN LIGHT */
+/* SOFT GOLDEN LIGHT EFFECT */
 #invitation::before {
   content: "";
   position: absolute;
@@ -1516,27 +1538,39 @@ body.wedding-locked {
 
   background:
     radial-gradient(
-      ellipse at 50% 12%,
-      rgba(215, 181, 109, 0.24),
-      transparent 52%
+      ellipse at 50% 5%,
+      rgba(215, 181, 109, 0.12),
+      transparent 40%
     ),
     radial-gradient(
-      ellipse at 10% 55%,
-      rgba(215, 181, 109, 0.10),
-      transparent 42%
-    ),
-    radial-gradient(
-      ellipse at 90% 80%,
-      rgba(215, 181, 109, 0.10),
-      transparent 42%
+      ellipse at 0% 70%,
+      rgba(215, 181, 109, 0.07),
+      transparent 35%
     );
 }
-background-image:
-  linear-gradient(
-    rgba(4, 22, 16, 0.48),
-    rgba(4, 22, 16, 0.68)
-  ),
-  url("images/islamic-mosque.png");
+
+/* KEEP CONTENT VISIBLE AND SCROLLABLE */
+#invitation.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+}
+
+/* BLEND EXISTING SECTIONS WITH THE BACKGROUND */
+#invitation section {
+  background-color: transparent;
+}
+
+/* MOBILE BACKGROUND */
+@media (max-width: 768px) {
+  #invitation {
+    background-attachment: scroll;
+    background-size: auto;
+  }
+}
+
 
 /* INVITATION CONTENT */
 #invitation.show {
