@@ -272,21 +272,6 @@ if (enterWedding && royalGate && invitation) {
 
 
   /* =======================================================
-     MUSIC BUTTON
-  ======================================================= */
-
-  if (musicButton) {
-
-    musicButton.addEventListener("click", function () {
-
-      musicButton.classList.toggle("playing");
-
-    });
-
-  }
-
-
-  /* =======================================================
      END
   ======================================================= */
 
