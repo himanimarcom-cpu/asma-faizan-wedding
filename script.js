@@ -18,32 +18,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const musicButton = document.getElementById("musicButton");
    
 
+
 /* WEDDING MUSIC */
 const weddingMusic = document.getElementById("weddingMusic");
 
 if (musicButton && weddingMusic) {
   weddingMusic.volume = 0.45;
 
-  musicButton.addEventListener("click", async function () {
-    if (weddingMusic.paused || weddingMusic.ended) {
-      try {
-        if (weddingMusic.ended) {
-          weddingMusic.currentTime = 0;
-        }
-
+  musicButton.onclick = async function () {
+    try {
+      if (weddingMusic.paused) {
         await weddingMusic.play();
         musicButton.textContent = "♫";
         musicButton.setAttribute("aria-pressed", "true");
-      } catch (error) {
-        console.error("Music playback error:", error);
+      } else {
+        weddingMusic.pause();
+        musicButton.textContent = "♪";
+        musicButton.setAttribute("aria-pressed", "false");
       }
-    } else {
-      weddingMusic.pause();
-      musicButton.textContent = "♪";
-      musicButton.setAttribute("aria-pressed", "false");
+    } catch (error) {
+      console.error("Wedding music error:", error);
+      alert("Music nahi chal raha. Page refresh karke dobara try karein.");
     }
-  });
+  };
 }
+
 
 
 
