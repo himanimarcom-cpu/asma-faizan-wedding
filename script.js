@@ -16,6 +16,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const enterWedding = document.getElementById("enterWedding");
   const invitation = document.getElementById("invitation");
   const musicButton = document.getElementById("musicButton");
+   
+/* WEDDING MUSIC */
+const weddingMusic = document.getElementById("weddingMusic");
+
+if (musicButton && weddingMusic) {
+  weddingMusic.volume = 0.45;
+
+  // Try autoplay when the page opens
+  weddingMusic.play().then(() => {
+    musicButton.textContent = "♫";
+    musicButton.setAttribute("aria-pressed", "true");
+  }).catch(() => {
+    // If autoplay is blocked, wait for the visitor to click
+    musicButton.textContent = "♪";
+  });
+
+  musicButton.addEventListener("click", async function () {
+    if (weddingMusic.paused) {
+      try {
+        await weddingMusic.play();
+        musicButton.textContent = "♫";
+        musicButton.setAttribute("aria-pressed", "true");
+      } catch (error) {
+        console.log("Browser ne music playback block kiya.");
+      }
+    } else {
+      weddingMusic.pause();
+      musicButton.textContent = "♪";
+      musicButton.setAttribute("aria-pressed", "false");
+    }
+  });
+}
+
 
 
   /* =======================================================
