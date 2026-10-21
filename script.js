@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 /* WEDDING MUSIC */
 const weddingMusic = document.getElementById("weddingMusic");
 
@@ -52,6 +53,7 @@ if (musicButton && weddingMusic) {
     weddingMusic.currentTime = 0;
   });
 }
+
 
 
 
