@@ -19,15 +19,21 @@ document.addEventListener("DOMContentLoaded", function () {
    
 
 
+
 /* WEDDING MUSIC */
 const weddingMusic = document.getElementById("weddingMusic");
 
 if (musicButton && weddingMusic) {
   weddingMusic.volume = 0.45;
+  weddingMusic.loop = true;
 
   musicButton.onclick = async function () {
     try {
-      if (weddingMusic.paused) {
+      if (weddingMusic.paused || weddingMusic.ended) {
+        if (weddingMusic.ended) {
+          weddingMusic.currentTime = 0;
+        }
+
         await weddingMusic.play();
         musicButton.textContent = "♫";
         musicButton.setAttribute("aria-pressed", "true");
@@ -38,10 +44,15 @@ if (musicButton && weddingMusic) {
       }
     } catch (error) {
       console.error("Wedding music error:", error);
-      alert("Music nahi chal raha. Page refresh karke dobara try karein.");
     }
   };
+
+  weddingMusic.addEventListener("ended", function () {
+    if (weddingMusic.loop) return;
+    weddingMusic.currentTime = 0;
+  });
 }
+
 
 
 
